@@ -61,19 +61,30 @@
   <component name="ProjectId" id="1XTeKaSiy0pMXfxuXxtFBYKPE85" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/FOSBundle/Resources/views" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.zend.framework.tool" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\testing_fos_ali\web" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\wamp64\www\testing_fos_ali\src\FOSBundle\Resources\views" />
+      <recent name="C:\wamp64\www\testing_fos_ali\src\FOSBundle\Controller" />
+      <recent name="C:\wamp64\www\testing_fos_ali\app\Resources" />
+    </key>
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
       <command value="c dump-autoload" />
-      <command value="s server:run" />
       <command value="s generate:bundle" />
       <command value="s doctrine:database:create" />
       <command value="eni" />
       <command value="s doctrine:generate:entity" />
       <command value="sxh" />
       <command value="s doctrine:schema:update --force" />
+      <command value="s server:run" />
     </option>
   </component>
   <component name="RunDashboard">
@@ -98,7 +109,9 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1581074448853</updated>
-      <workItem from="1581074450017" duration="3158000" />
+      <workItem from="1581074450017" duration="3720000" />
+      <workItem from="1581108790452" duration="123000" />
+      <workItem from="1581164813345" duration="1442000" />
     </task>
     <servers />
   </component>
