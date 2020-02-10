@@ -1,0 +1,36 @@
+sponsors_homepage:
+    path:     /
+    defaults: { _controller: SponsorsBundle:Default:index }
+
+pack_new:
+    path:     /pack/new
+    defaults: { _controller: SponsorsBundle:Pack:new }
+
+pack_index:
+    path:     /pack
+    defaults: { _controller: SponsorsBundle:Pack:index }
+
+pack_show:
+    path:     /pack/show/{idad}
+    defaults: { _controller: SponsorsBundle:Pack:show }
+
+pack_edit:
+    path:     /pack/edit/{idad}
+    defaults: { _controller: SponsorsBundle:Pack:edit }
+
+
+sponsor_new:
+    path:     /sponsor/new
+    defaults: { _controller: SponsorsBundle:Sponsor:new }
+
+sponsor_index:
+    path:     /sponsor
+    defaults: { _controller: SponsorsBundle:Sponsor:index }
+
+sponsor_show:
+    path:     /sponsor/show/{idsp}
+    defaults: { _controller: SponsorsBundle:Sponsor:show }
+
+sponsor_edit:
+    path:     /sponsor/edit/{idsp}
+    defaults: { _controller: SponsorsBundle:Sponsor:edit }

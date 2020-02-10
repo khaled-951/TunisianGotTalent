@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html class="no-js " lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="description" content="Responsive Bootstrap 4 and web Application ui kit.">
+
+    <title>
+        {% block title %}:: Oreo Bootstrap4 Admin ::
+        {% endblock %}
+    </title>
+
+    {% block stylesheets %}
+        <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Favicon-->
+        <link rel="stylesheet" href="{{ asset('Dashboard/assets/plugins/bootstrap/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('Dashboard/assets/plugins/jvectormap/jquery-jvectormap-2.0.3.min.css') }}"/>
+        <link rel="stylesheet" href="{{ asset('Dashboard/assets/plugins/morrisjs/morris.min.css') }}" />
+        <!-- Custom Css -->
+        <link rel="stylesheet" href="{{ asset('Dashboard/assets/css/main.css') }}">
+        <link rel="stylesheet" href="{{ asset('Dashboard/assets/css/color_skins.css') }}">
+    {% endblock %}
+</head>
+<body class="theme-purple">
+<!-- Page Loader -->
+<div class="page-loader-wrapper">
+    <div class="loader">
+        <div class="m-t-30"><img class="zmdi-hc-spin" src="{{ asset('Dashboard/assets/images/logo.svg') }}" width="48" height="48" alt="Oreo"></div>
+        <p>Please wait...</p>
+    </div>
+</div>
+<!-- Overlay For Sidebars -->
+<div class="overlay"></div>
+
+<!-- Top Bar -->
+{% block header %}
+    <nav class="navbar p-l-5 p-r-5">
+        <ul class="nav navbar-nav navbar-left">
+            <li>
+                <div class="navbar-header">
+                    <a href="javascript:void(0);" class="bars"></a>
+                    <a class="navbar-brand" href="index.html"><img src="assets/images/logo.svg" width="30" alt="Oreo"><span class="m-l-10">Oreo</span></a>
+                </div>
+            </li>
+            <li><a href="javascript:void(0);" class="ls-toggle-btn" data-close="true"><i class="zmdi zmdi-swap"></i></a></li>
+            <li class="hidden-md-down"><a href="events.html" title="Events"><i class="zmdi zmdi-calendar"></i></a></li>
+            <li class="hidden-md-down"><a href="mail-inbox.html" title="Inbox"><i class="zmdi zmdi-email"></i></a></li>
+            <li><a href="contact.html" title="Contact List"><i class="zmdi zmdi-account-box-phone"></i></a></li>
+            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="zmdi zmdi-notifications"></i>
+                    <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
+                </a>
+                <ul class="dropdown-menu pullDown">
+                    <li class="body">
+                        <ul class="menu list-unstyled">
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <div class="media">
+                                        <img class="media-object" src="assets/images/xs/avatar2.jpg" alt="">
+                                        <div class="media-body">
+                                            <span class="name">Sophia <span class="time">30min ago</span></span>
+                                            <span class="message">There are many variations of passages</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <div class="media">
+                                        <img class="media-object" src="assets/images/xs/avatar3.jpg" alt="">
+                                        <div class="media-body">
+                                            <span class="name">Sophia <span class="time">31min ago</span></span>
+                                            <span class="message">There are many variations of passages of Lorem Ipsum</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <div class="media">
+                                        <img class="media-object" src="assets/images/xs/avatar4.jpg" alt="">
+                                        <div class="media-body">
+                                            <span class="name">Isabella <span class="time">35min ago</span></span>
+                                            <span class="message">There are many variations of passages</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <div class="media">
+                                        <img class="media-object" src="assets/images/xs/avatar5.jpg" alt="">
+                                        <div class="media-body">
+                                            <span class="name">Alexander <span class="time">35min ago</span></span>
+                                            <span class="message">Contrary to popular belief, Lorem Ipsum random</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <div class="media">
+                                        <img class="media-object" src="assets/images/xs/avatar6.jpg" alt="">
+                                        <div class="media-body">
+                                            <span class="name">Grayson <span class="time">1hr ago</span></span>
+                                            <span class="message">There are many variations of passages</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="footer"> <a href="javascript:void(0);">View All</a> </li>
+                </ul>
+            </li>
+            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button"><i class="zmdi zmdi-flag"></i>
+                    <div class="notify">
+                        <span class="heartbit"></span>
+                        <span class="point"></span>
+                    </div>
+                </a>
+                <ul class="dropdown-menu pullDown">
+                    <li class="header">Project</li>
+                    <li class="body">
+                        <ul class="menu tasks list-unstyled">
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <div class="progress-container progress-primary">
+                                        <span class="progress-badge">eCommerce Website</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100" style="width: 86%;">
+                                                <span class="progress-value">86%</span>
+                                            </div>
+                                        </div>
+                                        <ul class="list-unstyled team-info">
+                                            <li class="m-r-15"><small class="text-muted">Team</small></li>
+                                            <li>
+                                                <img src="assets/images/xs/avatar2.jpg" alt="Avatar">
+                                            </li>
+                                            <li>
+                                                <img src="assets/images/xs/avatar3.jpg" alt="Avatar">
+                                            </li>
+                                            <li>
+                                                <img src="assets/images/xs/avatar4.jpg" alt="Avatar">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <div class="progress-container progress-info">
+                                        <span class="progress-badge">iOS Game Dev</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%;">
+                                                <span class="progress-value">45%</span>
+                                            </div>
+                                        </div>
+                                        <ul class="list-unstyled team-info">
+                                            <li class="m-r-15"><small class="text-muted">Team</small></li>
+                                            <li>
+                                                <img src="assets/images/xs/avatar10.jpg" alt="Avatar">
+                                            </li>
+                                            <li>
+                                                <img src="assets/images/xs/avatar9.jpg" alt="Avatar">
+                                            </li>
+                                            <li>
+                                                <img src="assets/images/xs/avatar8.jpg" alt="Avatar">
+                                            </li>
+                                            <li>
+                                                <img src="assets/images/xs/avatar7.jpg" alt="Avatar">
+                                            </li>
+                                            <li>
+                                                <img src="assets/images/xs/avatar6.jpg" alt="Avatar">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">
+                                    <div class="progress-container progress-warning">
+                                        <span class="progress-badge">Home Development</span>
+                                        <div class="progress">
+                                            <div class="progress-bar" role="progressbar" aria-valuenow="29" aria-valuemin="0" aria-valuemax="100" style="width: 29%;">
+                                                <span class="progress-value">29%</span>
+                                            </div>
+                                        </div>
+                                        <ul class="list-unstyled team-info">
+                                            <li class="m-r-15"><small class="text-muted">Team</small></li>
+                                            <li>
+                                                <img src="assets/images/xs/avatar5.jpg" alt="Avatar">
+                                            </li>
+                                            <li>
+                                                <img src="assets/images/xs/avatar2.jpg" alt="Avatar">
+                                            </li>
+                                            <li>
+                                                <img src="assets/images/xs/avatar7.jpg" alt="Avatar">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="footer"><a href="javascript:void(0);">View All</a></li>
+                </ul>
+            </li>
+            <li class="hidden-sm-down">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <span class="input-group-addon">
+                    <i class="zmdi zmdi-search"></i>
+                </span>
+                </div>
+            </li>
+            <li class="float-right">
+                <a href="javascript:void(0);" class="fullscreen hidden-sm-down" data-provide="fullscreen" data-close="true"><i class="zmdi zmdi-fullscreen"></i></a>
+                <a href="sign-in.html" class="mega-menu" data-close="true"><i class="zmdi zmdi-power"></i></a>
+            </li>
+        </ul>
+    </nav>
+{% endblock %}
+<!-- Left Sidebar -->
+{% block leftbar %}
+    <aside id="leftsidebar" class="sidebar">
+        <ul class="nav nav-tabs">
+            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#dashboard"><i class="zmdi zmdi-home m-r-5"></i>Oreo</a></li>
+            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#user"><i class="zmdi zmdi-account m-r-5"></i>User</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane stretchRight active" id="dashboard">
+                <div class="menu">
+                    <ul class="list">
+                        <li>
+                            <div class="user-info">
+                                <div class="image"><a href="profile.html"><img src="assets/images/profile_av.jpg" alt="User"></a></div>
+                                <div class="detail">
+                                    <h4>Michael</h4>
+                                    <small>UI UX Designer</small>
+                                </div>
+                                <a title="facebook" href="#"><i class="zmdi zmdi-facebook"></i></a>
+                                <a title="twitter" href="#"><i class="zmdi zmdi-twitter"></i></a>
+                                <a title="instagram" href="#"><i class="zmdi zmdi-instagram"></i></a>
+                            </div>
+                        </li>
+                        <li class="header">MAIN</li>
+                        <li class="active open"> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-home"></i><span>Dashboard</span></a>
+                            <ul class="ml-menu">
+                                <li class="active"><a href="index.html">Main</a> </li>
+                                <li><a href="dashboard-rtl.html">RTL</a></li>
+                                <li><a href="index2.html">Horizontal</a></li>
+                                <li><a href="ec-dashboard.html">Ecommerce</a></li>
+                                <li><a href="blog-dashboard.html">Blog</a></li>
+                            </ul>
+                        </li>
+                        <li> <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-apps"></i><span>App</span> </a>
+                            <ul class="ml-menu">
+                                <li><a href="mail-inbox.html">Inbox</a></li>
+                                <li><a href="chat.html">Chat</a></li>
+                                <li><a href="events.html">Calendar</a></li>
+                                <li><a href="file-dashboard.html">File Manager</a></li>
+                                <li><a href="contact.html">Contact list</a></li>
+                                <li><a href="blog-dashboard.html">Blog</a></li>
+                            </ul>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </aside>
+{% endblock %}
+<!-- Right Sidebar -->
+{% block rightbar %}
+    <aside id="rightsidebar" class="right-sidebar">
+
+    </aside>
+{% endblock %}
+<!-- Chat-launcher -->
+
+
+<!-- Main Content -->
+{% block container %}
+    <section class="content home">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-12">
+                    <h2>Dashboard
+                        <small>Welcome to Oreo</small>
+                    </h2>
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-12 text-right">
+                    <div class="inlineblock text-center m-r-15 m-l-15 hidden-md-down">
+                        <div class="sparkline" data-type="bar" data-width="97%" data-height="25px" data-bar-Width="2" data-bar-Spacing="5" data-bar-Color="#fff">3,2,6,5,9,8,7,9,5,1,3,5,7,4,6</div>
+                        <small class="col-white">Visitors</small>
+                    </div>
+                    <div class="inlineblock text-center m-r-15 m-l-15 hidden-md-down">
+                        <div class="sparkline" data-type="bar" data-width="97%" data-height="25px" data-bar-Width="2" data-bar-Spacing="5" data-bar-Color="#fff">1,3,5,7,4,6,3,2,6,5,9,8,7,9,5</div>
+                        <small class="col-white">Bounce Rate</small>
+                    </div>
+                    <button class="btn btn-white btn-icon btn-round hidden-sm-down float-right m-l-10" type="button">
+                        <i class="zmdi zmdi-plus"></i>
+                    </button>
+                    <ul class="breadcrumb float-md-right">
+                        <li class="breadcrumb-item"><a href="index.html"><i class="zmdi zmdi-home"></i> Oreo</a></li>
+                        <li class="breadcrumb-item active">Dashboard</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+
+
+            <div class="row clearfix">
+                <div class="col-lg-8 col-md-12">
+                    <div class="row clearfix">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <ul class="row profile_state list-unstyled">
+                                    <li class="col-lg-3 col-md-3 col-6">
+                                        <div class="body">
+                                            <i class="zmdi zmdi-eye col-amber"></i>
+                                            <h4>15,453</h4>
+                                            <span>Post View</span>
+                                        </div>
+                                    </li>
+                                    <li class="col-lg-3 col-md-3 col-6">
+                                        <div class="body">
+                                            <i class="zmdi zmdi-thumb-up col-blue"></i>
+                                            <h4>921</h4>
+                                            <span>Likes</span>
+                                        </div>
+                                    </li>
+                                    <li class="col-lg-3 col-md-3 col-6">
+                                        <div class="body">
+                                            <i class="zmdi zmdi-comment-text col-red"></i>
+                                            <h4>215</h4>
+                                            <span>Comments</span>
+                                        </div>
+                                    </li>
+                                    <li class="col-lg-3 col-md-3 col-6">
+                                        <div class="body">
+                                            <i class="zmdi zmdi-account text-success"></i>
+                                            <h4>22,055</h4>
+                                            <span>Profile Views</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-6">
+                            <div class="card tasks_report">
+                                <div class="header">
+                                    <h2><strong>Total</strong> Revenue</h2>
+                                    <ul class="header-dropdown">
+                                        <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                            <ul class="dropdown-menu dropdown-menu-right slideUp">
+                                                <li><a href="javascript:void(0);">2017 Year</a></li>
+                                                <li><a href="javascript:void(0);">2016 Year</a></li>
+                                                <li><a href="javascript:void(0);">2015 Year</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="remove">
+                                            <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="body text-center">
+                                    <h4 class="margin-0">Total Sale</h4>
+                                    <h6 class="m-b-20">2,45,124</h6>
+                                    <input type="text" class="knob dial1" value="66" data-width="100" data-height="100" data-thickness="0.1" data-fgColor="#212121" readonly>
+                                    <h6 class="m-t-20">Satisfaction Rate</h6>
+                                    <small class="displayblock">47% Average <i class="zmdi zmdi-trending-up"></i></small>
+                                    <div class="sparkline m-t-20" data-type="bar" data-width="97%" data-height="35px" data-bar-Width="2" data-bar-Spacing="8" data-bar-Color="#212121">3,2,6,5,9,8,7,8,4,5,1,2,9,5,1,3,5,7,4,6</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-6">
+                            <div class="card top-report">
+                                <div class="body">
+                                    <h3 class="m-t-0">1,600 <i class="zmdi zmdi-trending-up float-right"></i></h3>
+                                    <p class="text-muted">New Feedbacks</p>
+                                    <div class="progress">
+                                        <div class="progress-bar l-blush" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
+                                    </div>
+                                    <small>Change 15%</small>
+                                </div>
+                            </div>
+                            <div class="card top-report">
+                                <div class="body">
+                                    <h3 class="m-t-0 m-b-25">50.5 Gb <i class="zmdi zmdi-trending-up float-right"></i></h3>
+                                    <p class="text-muted">Traffic this month</p>
+                                    <div class="progress">
+                                        <div class="progress-bar l-turquoise" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
+                                    </div>
+                                    <small>Change 5%</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12">
+                    <div class="card weather2">
+                        <div class="city-selected body l-khaki">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="city"><span>City:</span> New York</div>
+                                    <div class="night">Day - 12:07 PM</div>
+                                </div>
+                                <div class="info col-7">
+                                    <div class="temp"><h2>34°</h2></div>
+                                </div>
+                                <div class="icon col-5">
+                                    <img src="assets/images/weather/summer.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-striped m-b-0">
+                            <tbody>
+                            <tr>
+                                <td>Wind</td>
+                                <td class="font-medium">ESE 17 mph</td>
+                            </tr>
+                            <tr>
+                                <td>Humidity</td>
+                                <td class="font-medium">72%</td>
+                            </tr>
+                            <tr>
+                                <td>Pressure</td>
+                                <td class="font-medium">25.56 in</td>
+                            </tr>
+                            <tr>
+                                <td>Cloud Cover</td>
+                                <td class="font-medium">80%</td>
+                            </tr>
+                            <tr>
+                                <td>Ceiling</td>
+                                <td class="font-medium">25280 ft</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="carousel slide" data-ride="carousel">
+                            <div class="carousel-inner" role="listbox">
+                                <div class="carousel-item text-center active">
+                                    <div class="col-12">
+                                        <ul class="row days-list list-unstyled">
+                                            <li class="day col-4">
+                                                <p>Monday</p>
+                                                <img src="assets/images/weather/rain.svg" alt="">
+                                            </li>
+                                            <li class="day col-4">
+                                                <p>Tuesday</p>
+                                                <img src="assets/images/weather/cloudy.svg" alt="">
+                                            </li>
+                                            <li class="day col-4">
+                                                <p>Wednesday</p>
+                                                <img src="assets/images/weather/wind.svg" alt="">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="carousel-item text-center">
+                                    <div class="col-12">
+                                        <ul class="row days-list list-unstyled">
+                                            <li class="day col-4">
+                                                <p>Thursday</p>
+                                                <img src="assets/images/weather/sky.svg" alt="">
+                                            </li>
+                                            <li class="day col-4">
+                                                <p>Friday</p>
+                                                <img src="assets/images/weather/cloudy.svg" alt="">
+                                            </li>
+                                            <li class="day col-4">
+                                                <p>Saturday</p>
+                                                <img src="assets/images/weather/summer.svg" alt="">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Members</strong> Profiles <small>Members Preformance / Monthly Status</small> </h2>
+                            <ul class="header-dropdown">
+                                <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                    <ul class="dropdown-menu dropdown-menu-right slideUp">
+                                        <li><a href="javascript:void(0);">Action</a></li>
+                                        <li><a href="javascript:void(0);">Another action</a></li>
+                                        <li><a href="javascript:void(0);">Something else</a></li>
+                                    </ul>
+                                </li>
+                                <li class="remove">
+                                    <a role="button" class="boxs-close"><i class="zmdi zmdi-close"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="body table-responsive members_profiles">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th style="width:60px;">Member</th>
+                                    <th>Name</th>
+                                    <th>Earnings</th>
+                                    <th>Sales</th>
+                                    <th>Reviews</th>
+                                    <th>Progress</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <img class="rounded-circle" src="assets/images/xs/avatar1.jpg" alt="user" width="40"> </td>
+                                    <td>
+                                        <a href="javascript:void(0);">Logan</a>
+                                    </td>
+                                    <td>$420</td>
+                                    <td>23</td>
+                                    <td>
+                                        <i class="zmdi zmdi-star"></i>
+                                        <i class="zmdi zmdi-star"></i>
+                                        <i class="zmdi zmdi-star"></i>
+                                        <i class="zmdi zmdi-star"></i>
+                                        <i class="zmdi zmdi-star-outline"></i>
+                                    </td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar l-green" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" style="width: 87%;"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img class="rounded-circle" src="assets/images/xs/avatar2.jpg" alt="user" width="40"> </td>
+                                    <td>
+                                        <a href="javascript:void(0);">Isabella</a>
+                                    </td>
+                                    <td>$350</td>
+                                    <td>16</td>
+                                    <td>
+                                        <i class="zmdi zmdi-star"></i>
+                                        <i class="zmdi zmdi-star"></i>
+                                        <i class="zmdi zmdi-star"></i>
+                                        <i class="zmdi zmdi-star-outline"></i>
+                                        <i class="zmdi zmdi-star-outline"></i>
+                                    </td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar l-amber" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" style="width: 68%;"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img class="rounded-circle" src="assets/images/xs/avatar3.jpg" alt="user" width="40"> </td>
+                                    <td>
+                                        <a href="javascript:void(0);">Jackson</a>
+                                    </td>
+                                    <td>$201</td>
+                                    <td>11</td>
+                                    <td>
+                                        <i class="zmdi zmdi-star"></i>
+                                        <i class="zmdi zmdi-star"></i>
+                                        <i class="zmdi zmdi-star-outline"></i>
+                                        <i class="zmdi zmdi-star-outline"></i>
+                                        <i class="zmdi zmdi-star-outline"></i>
+                                    </td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar l-parpl" role="progressbar" aria-valuenow="32" aria-valuemin="0" aria-valuemax="100" style="width:32%;"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img class="rounded-circle" src="assets/images/xs/avatar4.jpg" alt="user" width="40"> </td>
+                                    <td>
+                                        <a href="javascript:void(0);">Victoria</a>
+                                    </td>
+                                    <td>$651</td>
+                                    <td>28</td>
+                                    <td>
+                                        <i class="zmdi zmdi-star"></i>
+                                        <i class="zmdi zmdi-star"></i>
+                                        <i class="zmdi zmdi-star"></i>
+                                        <i class="zmdi zmdi-star"></i>
+                                        <i class="zmdi zmdi-star-half"></i>
+                                    </td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar l-green" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <img class="rounded-circle" src="assets/images/xs/avatar5.jpg" alt="user" width="40"> </td>
+                                    <td>
+                                        <a href="javascript:void(0);">Lucas</a>
+                                    </td>
+                                    <td>$300</td>
+                                    <td>20</td>
+                                    <td>
+                                        <i class="zmdi zmdi-star"></i>
+                                        <i class="zmdi zmdi-star"></i>
+                                        <i class="zmdi zmdi-star"></i>
+                                        <i class="zmdi zmdi-star-half"></i>
+                                        <i class="zmdi zmdi-star-outline"></i>
+                                    </td>
+                                    <td>
+                                        <div class="progress">
+                                            <div class="progress-bar l-blue" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" style="width: 50%;"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}
+<!-- Jquery Core Js -->
+{% block javascripts %}
+    <script src="{{ asset('Dashboard/assets/bundles/libscripts.bundle.js') }}"></script> <!-- Lib Scripts Plugin Js ( jquery.v3.2.1, Bootstrap4 js) -->
+    <script src="{{ asset('Dashboard/assets/bundles/vendorscripts.bundle.js') }}"></script> <!-- slimscroll, waves Scripts Plugin Js -->
+
+    <script src="{{ asset('Dashboard/assets/bundles/morrisscripts.bundle.js') }}"></script><!-- Morris Plugin Js -->
+    <script src="{{ asset('Dashboard/assets/bundles/jvectormap.bundle.js') }}"></script> <!-- JVectorMap Plugin Js -->
+    <script src="{{ asset('Dashboard/assets/bundles/knob.bundle.js') }}"></script> <!-- Jquery Knob, Count To, Sparkline Js -->
+
+    <script src="{{ asset('Dashboard/assets/bundles/mainscripts.bundle.js') }}"></script>
+    <script src="{{ asset('Dashboard/assets/js/pages/index.js') }}"></script>
+{% endblock %}
+</body>
+</html>

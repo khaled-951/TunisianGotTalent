@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+{%  endblock %}
+{% block leftbar %}
+{%  endblock %}
+{% block container %}
+
+    <section class="content home">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-7 col-md-6 col-sm-12">
+
+                </div>
+                <div class="col-lg-5 col-md-6 col-sm-12">
+                    <ul class="breadcrumb float-md-right">
+                        <li class="breadcrumb-item"><a href="{{ path('sponsor_index') }}"><i class="zmdi zmdi-home"></i> Home</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Sponsors</strong> List  </h2>
+                            <ul class="header-dropdown">
+                                <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                    <ul class="dropdown-menu dropdown-menu-right slideUp">
+                                        <li><a href="{{ path('sponsor_new') }}">new sponsor</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="body table-responsive members_profiles">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th style="width:60px;">Sponsor</th>
+                                    <th>Sponsor ID</th>
+                                    <th>Sponsor Name</th>
+                                    <th>Description</th>
+                                    <th>Email</th>
+                                    <th>Address</th>
+                                    <th>Phone</th>
+                                    <th>Action</th>
+
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                {% for sponsor in sponsors %}
+                                    <tr>
+                                        <td>
+                                            <img class="rounded-circle" src="assets/images/xs/avatar1.jpg" alt="user" width="40">{{ sponsor.logo }}
+                                        </td>
+
+                                        <td><a href="{{ path('sponsor_show', { 'idsp': sponsor.idsp }) }}">{{ sponsor.idsp }}</a></td>
+                                        <td>
+                                            <a href="javascript:void(0);">{{ sponsor.namesp }}</a>
+                                        </td>
+                                        <td>{{ sponsor.description }}</td>
+                                        <td>{{ sponsor.email }}</td>
+                                        <td>{{ sponsor.address }}</td>
+                                        <td>{{ sponsor.tel }}</td>
+
+
+                                        <td>
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ path('sponsor_show', { 'idsp': sponsor.idsp }) }}">show</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('sponsor_edit', { 'idsp': sponsor.idsp }) }}">edit</a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

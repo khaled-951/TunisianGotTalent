@@ -1,0 +1,103 @@
+{% extends "base.html.twig" %}
+{% block header %}
+{%  endblock %}
+{% block leftbar %}
+{%  endblock %}
+
+{% block container %}
+<section class="content profile-page">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-7 col-md-6 col-sm-12">
+                <h2><strong>Sponsor ID</strong> -  {{ sponsor.idsp }} </h2>
+            </div>
+            <div class="col-lg-5 col-md-6 col-sm-12">
+                <ul class="breadcrumb float-md-right">
+                    <li class="breadcrumb-item"><a href="{{ path('sponsor_index') }}"><i class="zmdi zmdi-home"></i> Home</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+
+        <div class="row clearfix">
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="tab-content">
+                        <div class="tab-pane body active" id="about">
+                            <div class="col-lg-4 col-md-4 col-12">
+                                <div class="profile-image float-md-right"> <img src="{{ asset('Dashboard/assets/images/profile_av.jpg') }}" alt=""> </div>
+
+                            </div>
+                            <h4 class="m-t-0 m-b-0"><strong>Sponsor</strong> Name</h4>
+                            <p>{{ sponsor.namesp }}</p>
+                            <hr>
+                            <small class="text-muted">Email address: </small>
+                            <p>{{ sponsor.email }}</p>
+                            <hr>
+
+                            <small class="text-muted">Phone Number: </small>
+                            <p>+ 216 {{sponsor.tel}}</p>
+                            <hr>
+                            <small class="text-muted">Address: </small>
+                            <p>{{sponsor.address}}</p>
+                            <hr>
+                            <small class="text-muted">Description:</small>
+                            <p class="m-b-0">{{ sponsor.description }}</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h2><strong>Sponsor</strong> Pack <small>Advertisments List</small> </h2>
+                        <ul class="header-dropdown">
+                            <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                <ul class="dropdown-menu dropdown-menu-right slideUp">
+                                    <li><a href="{{ path('pack_index') }}">Pack List</a></li>
+
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="body table-responsive members_profiles">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th style="width:60px;">Pack ID</th>
+                                <th>Position</th>
+                                <th>Display Date</th>
+                                <th>Discard Date</th>
+                                <th>Price</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for pack in packs %}
+
+                                    <tr>
+                                        <td><img class="rounded-circle" src="assets/images/xs/avatar1.jpg" alt="user" width="40"> {{ pack.idad }}</td>
+                                        <td><a href="javascript:void(0);">{{ pack.position  }}</a></td>
+                                        <td>{{ pack.displaydate | date("d/m/Y") }}</td>
+                                        <td>{{ pack.discarddate | date("d/m/Y")}}</td>
+                                        <td>{{ pack.price }}</td>
+                                    </tr>
+
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+{% endblock %}
+
+
