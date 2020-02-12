@@ -1,0 +1,21 @@
+got_homepage:
+    path:     /
+    defaults: { _controller: GOTBundle:Default:index }
+myprofile:
+    path:     /myprofile
+    defaults: { _controller: GOTBundle:Template:myprofile }
+talentprofile:
+  path:     /talentprofile
+  defaults: { _controller: GOTBundle:Template:talentprofile }
+sponsors:
+    path:     /sponsors
+    defaults: { _controller: GOTBundle:Template:sponsors }
+signup:
+    path:     /signup
+    defaults: { _controller: GOTBundle:Template:signup }
+guest:
+  path:     /guest
+  defaults: { _controller: GOTBundle:Template:guest }
+admin:
+  path:     /dashbord
+  defaults: { _controller: GOTBundle:Template:dashboard }
