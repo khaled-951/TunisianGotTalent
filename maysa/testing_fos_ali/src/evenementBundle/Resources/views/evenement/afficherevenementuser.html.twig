@@ -1,0 +1,299 @@
+{% extends 'base.html.twig' %}
+{% block header %}
+    <header>
+
+        <div class="container">
+            <div class="header-data">
+                <div class="logo">
+                    <a href="index.html" title=""><img src="{{ asset('template/images/logo.png') }}" alt=""></a>
+                </div><!--logo end-->
+                <div class="search-bar">
+                    <form>
+                        <input type="text" name="search" placeholder="Search...">
+                        <button type="submit"><i class="la la-search"></i></button>
+                    </form>
+                </div><!--search-bar end-->
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="index.html" title="">
+                                <span><img src="{{ asset('template/images/icon1.png')}}" alt=""></span>
+                                Acceuil
+                            </a>
+                        </li>
+                        <li>
+                            <a href="companies.html" title="">
+                                <span><i class="fa fa-headphones"></i></span>
+                                evenement
+                            </a>
+                            <ul>
+                                <li><a href="companies.html" title="">Companies</a></li>
+                                <li><a href="company-profile.html" title="">Company Profile</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="projects.html" title="">
+                                <span><i class="fa fa-gift"></i></span>
+                                donation
+                            </a>
+                        </li>
+                        <li>
+                            <a href="profiles.html" title="">
+                                <span><img src="{{ asset('template/images/icon4.png')}}" alt=""></span>
+                                Profiles
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <a href="#" title="" class="not-box-openm">
+                                <span> <i class="fa fa-diamond"></i></span>
+                                Diamond
+                            </a>
+
+                            <div class="notification-box msg" id="message">
+
+                                <div class="nt-title">
+
+                                    <a href="#" title="">Ganger plus du diamond</a>
+                                </div>
+
+                                <div class="nott-list">
+                                    <div class="notfication-details">
+                                        <div class="noty-user-img">
+                                            <img src="{{ asset('template/images/maysa.jpg')}}" alt="">
+                                        </div>
+                                        <div class="notification-info">
+                                            <h3><a href="messages.html" title="">Vous avez 500 Diamond </a> </h3>
+
+
+                                        </div><!--notification-info -->
+                                    </div>
+
+
+                                    <div class="view-all-nots">
+
+                                    </div>
+                                </div><!--nott-list end-->
+                            </div><!--notification-box end-->
+                        </li>
+                        <li>
+                            <a href="#" title="" class="not-box-open">
+                                <span><img src="{{ asset('template/images/icon7.png')}}" alt=""></span>
+                                Notification
+                            </a>
+                            <div class="notification-box noti" id="notification">
+                                <div class="nt-title">
+                                    <h4>Setting</h4>
+                                    <a href="#" title="">Clear all</a>
+                                </div>
+                                <div class="nott-list">
+                                    <div class="notfication-details">
+                                        <div class="noty-user-img">
+                                            <img src="{{ asset('template/images/resources/ny-img1.png')}}" alt="">
+                                        </div>
+                                        <div class="notification-info">
+                                            <h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
+                                            <span>2 min ago</span>
+                                        </div><!--notification-info -->
+                                    </div>
+                                    <div class="notfication-details">
+                                        <div class="noty-user-img">
+                                            <img src="{{ asset('template/images/resources/ny-img2.png')}}" alt="">
+                                        </div>
+                                        <div class="notification-info">
+                                            <h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
+                                            <span>2 min ago</span>
+                                        </div><!--notification-info -->
+                                    </div>
+                                    <div class="notfication-details">
+                                        <div class="noty-user-img">
+                                            <img src="{{ asset('template/images/resources/ny-img3.png')}}" alt="">
+                                        </div>
+                                        <div class="notification-info">
+                                            <h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
+                                            <span>2 min ago</span>
+                                        </div><!--notification-info -->
+                                    </div>
+                                    <div class="notfication-details">
+                                        <div class="noty-user-img">
+                                            <img src="{{ asset('template/images/resources/ny-img2.png')}}" alt="">
+                                        </div>
+                                        <div class="notification-info">
+                                            <h3><a href="#" title="">Jassica William</a> Comment on your project.</h3>
+                                            <span>2 min ago</span>
+                                        </div><!--notification-info -->
+                                    </div>
+                                    <div class="view-all-nots">
+                                        <a href="#" title="">View All Notification</a>
+                                    </div>
+                                </div><!--nott-list end-->
+                            </div><!--notification-box end-->
+                        </li>
+                    </ul>
+                </nav><!--nav end-->
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+
+                    <div class="menu-btn">
+                        <a href="#" title=""><i class="fa fa-bars"></i></a>
+                    </div><!--menu-btn end-->
+                    <div class="user-account">
+                        <div class="user-info">
+                            <img src="{{ asset('template/images/resources/maysa.jpg')}}" alt="">
+                            <a href="#" title="">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</a>
+                            <i class="la la-sort-down"></i>
+                        </div>
+                        <div class="user-account-settingss" id="users">
+                            <h3>Online Status</h3>
+                            <ul class="on-off-status">
+                                <li>
+                                    <div class="fgt-sec">
+                                        <input type="radio" name="cc" id="c5">
+                                        <label for="c5">
+                                            <span></span>
+                                        </label>
+                                        <small>Online</small>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="fgt-sec">
+                                        <input type="radio" name="cc" id="c6">
+                                        <label for="c6">
+                                            <span></span>
+                                        </label>
+                                        <small>Offline</small>
+                                    </div>
+                                </li>
+                            </ul>
+                            <h3>Custom Status</h3>
+                            <div class="search_form">
+                                <form>
+                                    <input type="text" name="search">
+                                    <button type="submit">Ok</button>
+                                </form>
+                            </div><!--search_form end-->
+                            <h3>Setting</h3>
+                            <ul class="us-links">
+                                <li><a href="profile-account-setting.html" title="">Account Setting</a></li>
+                                <li><a href="#" title="">Privacy</a></li>
+                                <li><a href="#" title="">Faqs</a></li>
+                                <li><a href="#" title="">Terms & Conditions</a></li>
+                            </ul>
+                            <h3 class="tc"><a href="/login" title="">Logout</a></h3>
+                        </div><!--user-account-settingss end-->
+                    </div>
+            </div><!--header-data end-->
+        </div>
+    </header><!--header end-->
+{% endblock %}
+
+{% block body %}
+
+
+
+
+
+    <section class="banner">
+
+
+
+
+        <span class="banner-title"> Nos evenements</span>
+    </section>
+    <br><br>
+    <br><br><br><br>
+    {% for message in app.flashes('error') %}
+        <div class="flash-error">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+
+    <br><br>
+
+    <section class="services">
+        <div class="container">
+
+            <div class="row">
+
+                {%  for c in evenement %}
+                    {% if app.user.typec == 'talent' %}
+                    <div class="col-md-4 col-sm-12">
+                        <div class="blog">
+                            <h2 align="centre" style="color: red"> {{ c.titre }}</h2>
+
+
+
+                            <img src="{{ asset('template/images/'~c.image)  }}" alt="image"/>
+                            <br><br><br><br><br><br><br><br><br>
+
+
+
+
+
+                            <h2  style="color: #0D47A1; font-size: medium;">Du {{ c.datedebut |date('Y-m-d')}} jusqu'à {{ c.datefin |date('Y-m-d')}}</h2>
+                            <h2 align="centre">
+
+                                <p style="color: #0D47A1; font-size: large;">{{ c.typedetalent }}</p><br>
+                                <p style="color: #0D47A1; font-size: large;">Vous avez besoin du {{ c.cout }}    <i class="fa fa-diamond"></i></p>
+
+
+                            </h2>
+
+                            <a href="{{ path('detailuser',{'id':c.id_evenement}) }}">Detail</a>
+                            <td>
+
+                                {% if (c.participe == false) and (c.cout < 500) %}
+
+                                    <a href="{{ path('ajouterticket',{'id':c.id_evenement}) }}">Participer</a>
+
+                                {% elseif c.participe == true %}
+                                    <a href="#">vous avez déja participé</a>
+
+                                {% elseif  c.cout > 500 %}
+                                    <br><br><br>
+                        <p style="color: red">gagner plus de diamond et reviens  </p>
+
+                                {% endif %}
+
+
+                            </td>
+
+                        </div>
+                    </div>
+                        {% else %}
+                        <script>
+                            window.alert("Seulement le Talent peut voir cette page");
+
+                        </script>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <footer>
+        <div class="footy-sec mn no-margin">
+            <div class="container">
+                <ul>
+                    <li><a href="help-center.html" title="">Help Center</a></li>
+                    <li><a href="about.html" title="">About</a></li>
+                    <li><a href="#" title="">Privacy Policy</a></li>
+                    <li><a href="#" title="">Community Guidelines</a></li>
+                    <li><a href="#" title="">Cookies Policy</a></li>
+                    <li><a href="#" title="">Career</a></li>
+                    <li><a href="forum.html" title="">Forum</a></li>
+                    <li><a href="#" title="">Language</a></li>
+                    <li><a href="#" title="">Copyright Policy</a></li>
+                </ul>
+                <p><img src="images/copy-icon2.png" alt="">Copyright 2019</p>
+                <img class="fl-rgt" src="images/logo2.png" alt="">
+            </div>
+        </div>
+    </footer><!--footer end-->
+
+{% endblock %}

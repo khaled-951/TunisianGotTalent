@@ -1,0 +1,84 @@
+
+{% extends 'base.html.twig' %}
+{% block body %}
+{{ form_start(form) }}
+
+
+
+
+
+
+
+    <section class="profile-account-setting">
+    <div class="container">
+    <div class="account-tabs-setting">
+    <div class="row">
+    <div class="col-lg-3">
+        <div class="acc-leftbar">
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+
+                <a class="nav-item nav-link" id="nav-password-tab" data-toggle="tab" href="#nav-password" role="tab" aria-controls="nav-password" aria-selected="false"><i class="fa fa-pencil"></i>Modifier Evenement</a>
+
+            </div>
+        </div><!--acc-leftbar end-->
+    </div>
+
+    <div role="tabpanel" aria-labelledby="nav-password-tab">
+    <div class="acc-setting">
+        <h3>Modifier les informations</h3>
+        {{ form_start(form) }}
+        <div class="cp-field">
+            <h5>Titre</h5>
+            <div class="cpp-fiel">
+                {{ form_widget(form.titre,{'attr':{ 'placeholder':'titre...'}}) }}
+                <i class="fa fa-comment-o"></i>
+            </div>
+        </div>
+        <div class="cp-field">
+            <h5>Date Debut</h5>
+            <div class="cpp-fiel">
+                {{ form_widget(form.datedebut) }}
+            </div>
+        </div>
+        <div class="cp-field">
+            <h5>Date Fin</h5>
+            <div class="cpp-fiel">
+                {{ form_widget(form.datefin) }}
+            </div>
+        </div>
+        <div class="cp-field">
+            <h5>Description</h5>
+            <div class="cpp-fiel">
+                <textarea   {{ form_widget(form.description,{'attr':{'placeholder':'Entrer la description...', }}) }}</textarea>
+                <i class="fa fa-comment-o"></i>
+            </div>
+        </div>
+
+        <div class="cp-field">
+            <h5>Type de talent</h5>
+            <div class="cpp-fiel">
+                {{ form_widget(form.typedetalent,{'attr':{'class':'form-control', }}) }}                                            </div>
+        </div>
+
+        <div class="cp-field">
+            <h5>Cout  <i class="fa fa-diamond"></i></h5>
+            <div class="cpp-field">
+                {{ form_widget(form.cout,{'attr':{'placeholder':'Entrer le cout...', }})}}
+            </div>
+        </div>
+        <div class="save-stngs pd2">
+            <h5>File  <i class="fa fa-cloud-upload"></i></h5>
+            {{ form_widget(form.file,{'attr':{'class':'save-stngs pd2', }}) }}
+
+        </div>
+        <div class="save-stngs pd2">
+            <ul>
+                <li  type="submit"> {{ form_widget(form.valider)}}</li>
+            </ul>
+        </div><!--save-stngs end-->
+        {{ form_end(form) }}
+    </div><!--acc-setting end-->
+
+
+{{ form_end(form) }}
+{% endblock %}
