@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+  {#  <script type="text/javascript" src="{{ asset('template/js/jquery.min.js')}}"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#datatable-responsive tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+    <h1>Donations list</h1>
+    <br>
+    search: <input id="myInput" type="text" placeholder="Search..">
+    <br>
+    <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap"
+           cellspacing="0" width="70%">
+
+            <tr>
+                <th>Id</th>
+                <th>Libdonation</th>
+                <th>Datecr</th>
+                <th>Valeurd</th>
+                <th>Photo</th>
+                <th>Description</th>
+                <th>Categorie</th>
+                <th>Actions</th>
+            </tr>
+
+
+        {% for donation in donations %}
+            <tr>
+                <td><a href="{{ path('donation_show', { 'id': donation.id }) }}">{{ donation.id }}</a></td>
+                <td>{{ donation.libDonation }}</td>
+                <td>{% if donation.dateCr %}{{ donation.dateCr|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ donation.valeurD }}</td>
+                <td><img src="{{ asset('images/') }}{{ donation.photo }}" style="width: 50px;height: 50px"></td>
+                <td>{{ donation.description }}</td>
+                <td>{{ donation.categorie }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('donation_show', { 'id': donation.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('donation_edit', { 'id': donation.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('donation_new') }}">Create a new donation</a>
+        </li>
+    </ul>#}
+<main>
+    <div class="main-section">
+        <div class="container">
+            <div class="main-section-data">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 pd-left-none no-pd">
+                        <div class="main-left-sidebar no-margin">
+                            {% if app.user.typec == 'chasseur' %}
+                            <ul class="flw-hr">
+                                <li><a href="{{ path('donation_new') }}" title="" class="flww"><i class="la la-plus"></i> Ajouter donation</a></li>
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-8 no-pd" >
+
+                        <div class="main-ws-sec">
+
+<div class="posts-section">
+    <div class="post-bar">
+
+        <div class="post_topbar">
+            <div class="usy-dt">
+                <img src="" alt="">
+                <div class="usy-name">
+                    <h3>Donations : </h3>
+
+                </div>
+            </div>
+
+
+            {% for donation in donations %}
+
+            <div class="epi-sec">
+
+                <ul class="bk-links">
+                    <li><a href="{{ path('donation_show', { 'id': donation.id }) }}" title=""><i class="la la-bookmark"></i>details </a></li>
+
+                </ul>
+                {% if (app.user.typec == 'chasseur') and (app.user.id == ' 6 ') %}
+                <ul class="bk-links">
+                    <li><a href="{{ path('donation_edit', { 'id': donation.id }) }}" title=""><i class="la la-bookmark"></i>edit </a></li>
+
+                </ul>
+                {% endif %}
+            </div>
+        <div class="job_descp">
+
+            <h3>{{ donation.libDonation }}</h3>
+            <ul class="job-dt">
+                <li><a href="#" title=""> <img src="{{ asset('images/diamant.png') }}" style="width: 15px;height: 15px">{{ donation.valeurD }}</a></li>
+                <td>{% if donation.dateCr %}{{ donation.dateCr|date('Y-m-d') }}{% endif %}</td>
+            </ul>
+            <td><img src="{{ asset('images/') }}{{ donation.photo }}" style="width: 500px;height: 300px"></td>
+            <p>{{ donation.description }}</p><a href="#" title="">view more</a></p>
+            <ul class="skill-tags">
+                <li><a href="#" title="">{{ donation.categorie }}</a></li>
+
+            </ul>
+        </div>
+            {% if app.user.typec == 'talent' %}
+            <div class="job-status-bar">
+                <button type="submit"><a href="/facture/{{ donation.id }}/new">Récuperer</a></button>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div><!--post-bar end-->
+
+
+</div></div></div></div></div>
+{% endblock %}

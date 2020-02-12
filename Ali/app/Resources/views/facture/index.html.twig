@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Factures list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datecr</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for facture in factures %}
+            <tr>
+                <td><a href="{{ path('facture_show', { 'id': facture.id }) }}">{{ facture.id }}</a></td>
+                <td>{% if facture.dateCr %}{{ facture.dateCr|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('facture_show', { 'id': facture.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('facture_edit', { 'id': facture.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('facture_new') }}">Create a new facture</a>
+        </li>
+    </ul>
+    <main>
+        <div class="main-section">
+            <div class="container">
+                <div class="main-section-data">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-4 pd-left-none no-pd">
+                            <div class="main-left-sidebar no-margin"></div>
+                        </div>
+                        <div class="col-lg-6 col-md-8 no-pd" >
+
+                            <div class="main-ws-sec">
+                                <div class="product-feed-tab" id="payment-dd">
+                                    <div class="billing-method">
+                                        <ul>
+                                            <li>
+                                                <h3>Add Billing Method</h3>
+                                                <a href="#" title=""><i class="fa fa-plus-circle"></i></a>
+                                            </li>
+                                            <li>
+                                                <h3>See Activity</h3>
+                                                <a href="#" title="">View All</a>
+                                            </li>
+                                            <li>
+                                                <h3>Total Money</h3>
+                                                <span>$0.00</span>
+                                            </li>
+                                        </ul>
+                                        <div class="lt-sec">
+                                            <img src="images/lt-icon.png" alt="">
+                                            <h4>All your transactions are saved here</h4>
+                                            <a href="#" title="">Click Here</a>
+                                        </div>
+                                    </div><!--billing-method end-->
+
+                                </div>
+                            </div></div></div></div></div></div></main>
+{% endblock %}

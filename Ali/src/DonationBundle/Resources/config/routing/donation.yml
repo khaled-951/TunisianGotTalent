@@ -1,0 +1,24 @@
+donation_index:
+    path:     /
+    defaults: { _controller: "DonationBundle:donation:index" }
+    methods:  GET
+
+donation_show:
+    path:     /{id}/show
+    defaults: { _controller: "DonationBundle:donation:show" }
+    methods:  GET
+
+donation_new:
+    path:     /new
+    defaults: { _controller: "DonationBundle:donation:new" }
+    methods:  [GET, POST]
+
+donation_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "DonationBundle:donation:edit" }
+    methods:  [GET, POST]
+
+donation_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "DonationBundle:donation:delete" }
+
