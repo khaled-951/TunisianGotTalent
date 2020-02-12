@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{#
+{% block body %}
+    <h1>Topic</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ topic.id }}</td>
+            </tr>
+            <tr>
+                <th>Sujet</th>
+                <td>{{ topic.sujet }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if topic.date %}{{ topic.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Categorie</th>
+                <td>{{ topic.categorie }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ topic.description }}</td>
+            </tr>
+            <tr>
+                <th>Topicby</th>
+                <td>{{ topic.topicBy }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('topics_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('topics_edit', { 'id': topic.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
+#}

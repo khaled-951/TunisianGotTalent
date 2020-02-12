@@ -1,0 +1,12 @@
+groupe_groupe:
+    resource: "@GroupeBundle/Resources/config/routing/groupe.yml"
+    prefix:   /groupe
+topic_topic:
+    resource: "@GroupeBundle/Resources/config/routing/topics.yml"
+    prefix:   /groupe/topic
+topic_replay:
+    resource: "@GroupeBundle/Resources/config/routing/replies.yml"
+    prefix:   /groupe/topic/Replay
+groupe_homepage:
+    path:     /
+    defaults: { _controller: GroupeBundle:Default:index }

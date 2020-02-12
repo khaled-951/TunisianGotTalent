@@ -1,0 +1,37 @@
+groupe_index:
+    path:     /
+    defaults: { _controller: "GroupeBundle:Groupe:index" }
+    methods:  GET
+groupe_list:
+    path: /list
+    defaults: { _controller: "GroupeBundle:Groupe:groups" }
+    methods:  GET
+demande_list:
+    path: /demande
+    defaults: { _controller: "GroupeBundle:Groupe:demandes" }
+    methods:  GET
+accept:
+    path: /accept/{id_groupe}/{id_user}/{id}
+    defaults: { _controller: "GroupeBundle:Groupe:accept" }
+demande:
+    path: /demande/{id}
+    defaults: { _controller: "GroupeBundle:Groupe:demande" }
+    methods:  [GET, POST]
+groupe_show:
+    path:     /{id}/show
+    defaults: { _controller: "GroupeBundle:Groupe:show" }
+    methods:  GET
+
+groupe_new:
+    path:     /new
+    defaults: { _controller: "GroupeBundle:Groupe:new" }
+    methods:  [GET, POST]
+
+groupe_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GroupeBundle:Groupe:edit" }
+    methods:  [GET, POST]
+
+groupe_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GroupeBundle:Groupe:delete" }
