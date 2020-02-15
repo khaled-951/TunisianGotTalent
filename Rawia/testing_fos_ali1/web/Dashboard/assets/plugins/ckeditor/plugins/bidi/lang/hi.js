@@ -1,0 +1,1 @@
+CKEDITOR.plugins.setLang("bidi","hi",{ltr:"Text direction mailfrom left to right",rtl:"Text direction mailfrom right to left"});
