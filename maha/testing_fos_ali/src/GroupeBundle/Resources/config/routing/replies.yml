@@ -1,0 +1,24 @@
+replies_index:
+    path:     /
+    defaults: { _controller: "GroupeBundle:Replies:index" }
+    methods:  GET
+
+replies_show:
+    path:     /replay/{id}/show
+    defaults: { _controller: "GroupeBundle:Replies:show" }
+    methods:  GET
+
+replies_new:
+    path:     /replay/new
+    defaults: { _controller: "GroupeBundle:Replies:new" }
+    methods:  [GET, POST]
+
+replies_edit:
+    path:     /replay/{id}/edit
+    defaults: { _controller: "GroupeBundle:Replies:edit" }
+    methods:  [GET, POST]
+
+replies_delete:
+    path:     /replay/{id}/delete
+    defaults: { _controller: "GroupeBundle:Replies:delete" }
+    methods:  DELETE

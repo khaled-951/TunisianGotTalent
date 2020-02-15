@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block container %}
+    <div class="container">
+        <h2>Donner Votre Avis</h2>
+        <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Votre Avis</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Avis</h4>
+                    </div>
+                    <div class="modal-body">
+                        {{ form_start(form) }}
+                        <div class="cp-field">
+                            <h5>Note</h5>
+                            <div class="form-group">
+                                {{ form_widget(form.note,{'attr':{'class':'form-control','id':'exampleFormControlSelect1','style':'-webkit-appearance: menulist-button;'}}) }}
+                            </div>
+                        </div>
+                        <div class="cp-field">
+                            <h5>Votre Avis</h5>
+                            <div class="form-group">
+                                {{ form_widget(form.description) }}
+                            </div>
+                        </div>
+                        <div class="save-stngs pd3">
+                            <ul>
+                                <!--<li><button type="submit">Envoyer</button></li>-->
+                                <li> {{ form_widget(form.Envoyer) }}</li>
+                            </ul>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+{% endblock %}
