@@ -41,6 +41,28 @@ class User extends BaseUser
     private $typec;
 
     /**
+     * @return int
+     */
+    public function getNbDiamants()
+    {
+        return $this->nbDiamants;
+    }
+
+    /**
+     * @param int $nbDiamants
+     */
+    public function setNbDiamants($nbDiamants)
+    {
+        $this->nbDiamants = $nbDiamants;
+    }
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nb_diamants", type="integer" , options={"default" : 0})
+     */
+    private $nbDiamants;
+
+    /**
      * @return string
      */
     public function getTypec()

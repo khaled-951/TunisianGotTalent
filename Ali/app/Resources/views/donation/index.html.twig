@@ -1,4 +1,18 @@
 {% extends 'base.html.twig' %}
+
+{% block javascripts %}
+
+   {# <script>
+        $(document).ready(function (){
+            $("#pic").click(function (){
+                $('html, body').animate({
+                    scrollTop: $("#div1").offset().top
+                }, 2000);
+            });
+        });
+    </script>#}
+
+{% endblock %}
 {% block body %}
   {#  <script type="text/javascript" src="{{ asset('template/js/jquery.min.js')}}"></script>
     <script>
@@ -59,11 +73,16 @@
             <a href="{{ path('donation_new') }}">Create a new donation</a>
         </li>
     </ul>#}
-<main>
+<main id="1">
     <div class="main-section">
         <div class="container">
+
+
             <div class="main-section-data">
+
                 <div class="row">
+
+
                     <div class="col-lg-3 col-md-4 pd-left-none no-pd">
                         <div class="main-left-sidebar no-margin">
                             {% if app.user.typec == 'chasseur' %}
@@ -74,8 +93,9 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6 col-md-8 no-pd" >
 
+
+                    <div class="col-lg-6 col-md-8 no-pd" >
                         <div class="main-ws-sec">
 
 <div class="posts-section">
@@ -92,14 +112,15 @@
 
 
             {% for donation in donations %}
+                {% if donation.hidden == '1'  %}
 
-            <div class="epi-sec">
+            <div class="epi-sec" id="div1">
 
                 <ul class="bk-links">
                     <li><a href="{{ path('donation_show', { 'id': donation.id }) }}" title=""><i class="la la-bookmark"></i>details </a></li>
 
                 </ul>
-                {% if (app.user.typec == 'chasseur') and (app.user.id == ' 6 ') %}
+                {% if (app.user.typec == 'chasseur') and (app.user.id == donation.userid.id) %}
                 <ul class="bk-links">
                     <li><a href="{{ path('donation_edit', { 'id': donation.id }) }}" title=""><i class="la la-bookmark"></i>edit </a></li>
 
@@ -111,10 +132,13 @@
             <h3>{{ donation.libDonation }}</h3>
             <ul class="job-dt">
                 <li><a href="#" title=""> <img src="{{ asset('images/diamant.png') }}" style="width: 15px;height: 15px">{{ donation.valeurD }}</a></li>
-                <td>{% if donation.dateCr %}{{ donation.dateCr|date('Y-m-d') }}{% endif %}</td>
+
             </ul>
+            <ul><li><h1>Date de creation : </h1><td>{% if donation.dateCr %}{{ donation.dateCr|date('Y-m-d') }}{% endif %}</td></li></ul>
             <td><img src="{{ asset('images/') }}{{ donation.photo }}" style="width: 500px;height: 300px"></td>
-            <p>{{ donation.description }}</p><a href="#" title="">view more</a></p>
+            <td><h3>Description</h3>
+                <p>{{ donation.description }}</p>
+            </td>
             <ul class="skill-tags">
                 <li><a href="#" title="">{{ donation.categorie }}</a></li>
 
@@ -125,9 +149,66 @@
                 <button type="submit"><a href="/facture/{{ donation.id }}/new">Récuperer</a></button>
             </div>
             {% endif %}
+                {% endif %}
             {% endfor %}
+            {{ knp_pagination_render(donations) }}
+
         </div><!--post-bar end-->
 
+        {#<div class="product-feed-tab" id="portfolio-dd">
+            <div class="portfolio-gallery-sec">
+                <h3>Portfolio</h3>
+                <div class="gallery_pf">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                            {% for donation in donations %}
+                            <div class="gallery_pt">
+                                <img src="{{ asset('images/') }}{{ donation.photo }}" style="width: 500px;height: 300px">
+                                <a href="#" title=""><img src="images/all-out.png" alt=""></a>
+                            </div><!--gallery_pt end-->
+                        </div>
+                       {% endfor %}
 
-</div></div></div></div></div>
+                        </div>
+                    </div>
+                </div><!--gallery_pf end-->
+            </div><!--portfolio-gallery-sec end-->
+        </div><!--product-feed-tab end-->#}
+
+
+</div></div></div></div>
+                    <div class="col-lg-3 pd-right-none no-pd">
+                        <div class="right-sidebar">
+                            <div class="widget widget-portfolio">
+                                <div class="wd-heady">
+                                    <h3> Dons du Jour </h3>
+                                    <img src="images/photo-icon.png" alt="">
+                                </div>
+                                <div class="pf-gallery">
+
+                                    <ul>
+                                        {% for donation in d_flash %}
+                                            <li><a id="pic" class="btnMedio"   title=""><img src="{{ asset('images/') }}{{ donation.photo }}" style="width: 50px;height: 50px"></a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div><!--pf-gallery end-->
+                            </div>
+                            <div class="main-left-sidebar no-margin">
+                                {% if app.user.typec == 'talent' %}
+                                    <ul class="flw-hr">
+                                        <li><a  href="{{ path('facture_index') }}" title="" class="flww"><i class="la la-plus"></i> Consulter mes factures</a></li>
+                                    </ul>
+                                {% endif %}
+                            </div>
+
+                            {% if app.user.typec == 'talent' %}
+                                {{app.user.nbDiamants}}
+                            {% endif %}
+                        </div></div>
+                </div>
+                <script>
+                    $('.btnMedio').click(function(){
+                        $('#1').animate({scrollTop:1000},'50');
+                    });
+                </script>
 {% endblock %}

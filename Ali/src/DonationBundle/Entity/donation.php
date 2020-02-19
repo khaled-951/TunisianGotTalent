@@ -4,6 +4,9 @@ namespace DonationBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Mgilet\NotificationBundle\Annotation\Notifiable;
+use Mgilet\NotificationBundle\NotifiableInterface;
+
 
 /**
  * donation
@@ -11,7 +14,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="donation")
  * @ORM\Entity(repositoryClass="DonationBundle\Repository\donationRepository")
  */
-class donation
+class donation implements NotifiableInterface
 {
     /**
      * @var int
@@ -24,7 +27,11 @@ class donation
 
     /**
      * @var string
-     *
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Your name cannot contain a number"
+     * )
      * @ORM\Column(name="lib_donation", type="string", length=255)
      */
     private $libDonation;
@@ -52,7 +59,7 @@ class donation
 
     /**
      * @var string
-     *
+     * @Assert\Length(min="20", minMessage="this description is too short")
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
@@ -100,10 +107,34 @@ class donation
      * @ORM\JoinColumn(name="user_id",referencedColumnName="id")
      */
     private $userid;
+
     /**
-     * @Assert\File(maxSize="6000000")
+     * @return int
+     */
+    public function getHidden()
+    {
+        return $this->hidden;
+    }
+
+    /**
+     * @param int $hidden
+     */
+    public function setHidden($hidden)
+    {
+        $this->hidden = $hidden;
+    }
+    /**
+     * @Assert\File(
+     *     maxSize = "1024k",
+     * )
      */
     private $file;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="hidden", type="integer" , options={"default" : 1})
+     */
+    private $hidden;
 
 
     /**

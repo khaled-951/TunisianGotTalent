@@ -28,6 +28,7 @@
     <expand />
     <select />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/fig/link-util" />
@@ -70,12 +71,17 @@
       <path value="$PROJECT_DIR$/vendor/twig/twig" />
       <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
       <path value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle" />
+      <path value="$PROJECT_DIR$/vendor/mgilet/notification-bundle" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-snappy" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-snappy-bundle" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1XTeKaSiy0pMXfxuXxtFBYKPE85" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../admin" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.zend.framework.tool" />
   </component>
@@ -97,7 +103,6 @@
     <option name="myCommands">
       <command value="eni" />
       <command value="sxh" />
-      <command value="c dump-autoload" />
       <command value="s doctrine:database:create" />
       <command value="s doctrine:schema:create" />
       <command value="s generate:bundle" />
@@ -105,8 +110,9 @@
       <command value="s doctrine:generate:entity" />
       <command value="s doctrine:generate:crud  " />
       <command value="s debug:router" />
-      <command value="s doctrine:schema:update --force" />
+      <command value="c dump-autoload" />
       <command value="s server:run" />
+      <command value="s doctrine:schema:update --force" />
     </option>
   </component>
   <component name="RunDashboard">
@@ -143,6 +149,17 @@
       <workItem from="1581462099162" duration="11320000" />
       <workItem from="1581506735223" duration="17064000" />
       <workItem from="1581543511065" duration="3318000" />
+      <workItem from="1581548092770" duration="10666000" />
+      <workItem from="1581583809016" duration="2268000" />
+      <workItem from="1581681090568" duration="4259000" />
+      <workItem from="1581721731368" duration="5298000" />
+      <workItem from="1581781526476" duration="17343000" />
+      <workItem from="1581869189805" duration="13449000" />
+      <workItem from="1581933290863" duration="8931000" />
+      <workItem from="1582015285546" duration="46000" />
+      <workItem from="1582019956783" duration="3642000" />
+      <workItem from="1582029501234" duration="7734000" />
+      <workItem from="1582064181636" duration="9128000" />
     </task>
     <servers />
   </component>

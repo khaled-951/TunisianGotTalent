@@ -1,0 +1,51 @@
+{% extends 'admin.html.twig' %}
+
+{% block username %} ADMIN {% endblock %}
+{% block strong %}Pack ID {%  endblock %}
+
+    {% block h2 %} -  {{ pack.idad }}{% endblock %}
+
+    {% block path %} {{ path('pack_index') }} {% endblock %}
+
+{% block body %}
+
+    <div class="row clearfix">
+            <div class="col-lg-8 col-md-12">
+                <div class="card">
+                    <div class="tab-content">
+
+                        <div class="tab-pane body active" id="about">
+
+                                <a role="button" class="boxs-close float-lg-right" href="{{ path('pack_delete',{ 'idad': pack.idad })}}"> Delete Ad <i class="zmdi zmdi-close"></i></a>
+
+                            <div class="col-lg-12 col-md-4 col-12">
+                                <div class="profile-image "> <img src="{{ asset('uploads/images/' ~ pack.ad) }}"width="350" height="250" ></div>
+
+                            </div>
+                            <h4 class="m-t-0 m-b-0"><strong>Position</strong>{{ pack.position }} </h4>
+
+                            <hr>
+                            <small class="text-muted">Display Date: </small>
+                            <p>{{ pack.displaydate| date("d/m/Y") }}</p>
+                            <hr>
+
+                            <small class="text-muted">Discard Date: </small>
+                            <p>{{ pack.discarddate| date("d/m/Y") }}</p>
+                            <hr>
+                            <small class="text-muted">Price: </small>
+                            <p>{{ pack.price }}</p>
+                            <hr>
+                            <small class="text-muted">Sponsor: </small>
+                            <p>{{ pack.idsp.namesp }}</p>
+                            <hr>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+{% endblock %}

@@ -3,6 +3,10 @@ donation_index:
     defaults: { _controller: "DonationBundle:donation:index" }
     methods:  GET
 
+donation_new2:
+    path:     /new2
+    defaults: { _controller: "DonationBundle:donation:new2" }
+    methods:  [GET, POST]
 donation_show:
     path:     /{id}/show
     defaults: { _controller: "DonationBundle:donation:show" }
@@ -21,4 +25,7 @@ donation_edit:
 donation_delete:
     path:     /{id}/delete
     defaults: { _controller: "DonationBundle:donation:delete" }
-
+donation_noti:
+    path:     /noti
+    defaults: { _controller: "DonationBundle:donation:sendNotification" }
+    methods:  GET

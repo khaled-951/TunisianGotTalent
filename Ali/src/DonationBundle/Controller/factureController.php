@@ -7,6 +7,9 @@ use DonationBundle\Entity\facture;
 use FOSBundle\Entity\talent;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+
 
 /**
  * Facture controller.
@@ -38,6 +41,7 @@ class factureController extends Controller
         $facture = new Facture();
         $donation= new donation();
         $talent= new talent();
+
         $em=$this->getDoctrine()->getManager();
        $donation =$em->getRepository("DonationBundle:donation")->find($id);
         //$talent=$em->getRepository("FOSBundle:talent")->find($id);
@@ -45,10 +49,20 @@ class factureController extends Controller
         $form = $this->createForm('DonationBundle\Form\factureType', $facture);
         $form->handleRequest($request);
         $facture->setUserid($this->getUser());
+        $usr=$facture->getUserid($this->getUser());
         $facture->setDonationid($donation);
         $facture->setDateCr(new \DateTime("now"));
-        $em->persist($facture);
-        $em->flush();
+        if($usr->getNbDiamants()>=($donation->getValeurD())) {
+            $usr->setNbDiamants($usr->getNbDiamants() - ($donation->getValeurD()));
+            $donation->setHidden('0');
+            $em->persist($facture);
+            $em->flush();
+        }
+            else if ($usr->getNbDiamants()< $donation->getValeurD())
+            {
+                return new Response('Nombre de diamants insuffisant');
+            }
+
         return $this->redirectToRoute('facture_show', array('id' => $facture->getId()));
         /*if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -134,6 +148,87 @@ class factureController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
+    public function pdfAction(Request $request, $id)
+    {
+        $donation=new donation();
+        $facture = new facture();
+        $em=$this->getDoctrine()->getManager();
+        $facture= $em->getRepository("DonationBundle:facture")->find($id);
+        $donation = $em->getRepository("DonationBundle:donation")->find($facture->getDonationid());
+
+        $snappy = $this->get('knp_snappy.pdf');
+        $snappy->setOption('no-outline', true);
+        $snappy->setOption('page-size','LETTER');
+        $snappy->setOption('encoding', 'UTF-8');
+
+        $html = $this->renderView('facture/pdf.html.twig', array(
+            'donation'=>$donation,
+            'facture' => $facture,
+        ));
+
+        $filename = 'myFirstSnappyPDF';
+
+        return new Response(
+            $snappy->getOutputFromHtml($html),
+            200,
+            array(
+                'Content-Type'          => 'application/pdf',
+                'Content-Disposition'   => 'inline; filename="'.$filename.'.pdf"'
+            )
+        );
+    }
+    public function pdf2Action()
+    {
+        $snappy = $this->get('knp_snappy.pdf');
+        $filename = 'myFirstSnappyPDF';
+
+        // use absolute path !
+        $pageUrl = $this->generateUrl('facture_index', array(), UrlGeneratorInterface::ABSOLUTE_URL);
+
+        return new Response(
+            $snappy->getOutput($pageUrl),
+            200,
+            array(
+                'Content-Type'          => 'application/pdf',
+                'Content-Disposition'   => 'inline; filename="'.$filename.'.pdf"'
+            )
+        );
+    }
+    public function NotifAction(Request $request)
+    {   $annonceTrouvee=array();
+        $em = $this->getDoctrine()->getManager();
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+       // $facture= $em->getRepository("DonationBundle:facture")->find($id);
+        $donation = $em->getRepository("DonationBundle:donation")->find($user->getUser());
+        foreach ($facture as $annonce)
+        { foreach ($donation as $alerte)
+        {
+            if(($annonce->getDonationid()==$alerte->getId())  )
+            {
+                $annonceTrouvee[]=$annonce;
+                //  var_dump($annonceTrouvee);
+                $erreur="trouvee";
+
+                $manager = $this->get('mgilet.notification');
+                $notif = $manager->generateNotification('Annonce trouvee !');
+                $notif->setMessage('This a notification.');
+                $notif->setLink('http://symfony.com/');
+                $manager->addNotification($this->getUser(), $notif);
+                return $this->redirectToRoute('Mes_Alertes_page');
+
+
+            }
+            else{
+
+                $erreur="vous n'avez aucune notification";
+            }
+
+        }
+
+        }
+        return $this->render('DonationBundle:Default:template.html.twig',array('erreur'=>$erreur, 'annonce'=>$annonceTrouvee));
+    }
+
     private function createDeleteForm(facture $facture)
     {
         return $this->createFormBuilder()

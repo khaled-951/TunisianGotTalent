@@ -10,5 +10,11 @@ namespace DonationBundle\Repository;
  */
 class donationRepository extends \Doctrine\ORM\EntityRepository
 {
-
+    public function findday()
+    {
+        $date= new \DateTime("now");
+        $query=$this->getEntityManager()->createQuery("SELECT t FROM DonationBundle:donation t where t.dateCr = :date ")
+            ->setParameter('date', $date->format('Y-m-d'));
+        return $query->getResult();
+    }
 }
