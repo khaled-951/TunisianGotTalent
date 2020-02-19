@@ -2,6 +2,16 @@ facture_index:
     path:     /
     defaults: { _controller: "DonationBundle:facture:index" }
     methods:  GET
+facture_noti:
+    path:     /{id}/noti
+    defaults: { _controller: "DonationBundle:facture:Notif" }
+    methods:  GET
+facture_pdf:
+    path:     /{id}/pdf
+    defaults: { _controller: "DonationBundle:facture:pdf" }
+facture_pdf2:
+    path:     /pdf2
+    defaults: { _controller: "DonationBundle:facture:pdf2" }
 
 facture_show:
     path:     /{id}/show

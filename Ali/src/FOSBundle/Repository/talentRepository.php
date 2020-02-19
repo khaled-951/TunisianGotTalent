@@ -10,4 +10,5 @@ namespace FOSBundle\Repository;
  */
 class talentRepository extends \Doctrine\ORM\EntityRepository
 {
+
 }

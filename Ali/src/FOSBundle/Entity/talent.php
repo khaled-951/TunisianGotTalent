@@ -20,25 +20,14 @@ class talent
     private $userid;
     /**
      * @var int
-     *
+     * @ORM\Id
      * @ORM\Column(name="nb_diamants", type="integer")
      */
     private $nbDiamants;
 
-    /**
-     * @var int
-     * @ORM\Id
-     * @ORM\Column(name="age", type="integer")
-     */
-    private $age;
 
-    /**
-     *
-     * @var string
-     *
-     * @ORM\Column(name="status", type="string", length=255 , columnDefinition="ENUM('chommeur ', 'etudiant ' , 'employee')")
-     */
-    private $status;
+
+
 
     /**
      * @return mixed
@@ -55,8 +44,6 @@ class talent
     {
         $this->userid = $userid;
     }
-
-
 
 
     /**
@@ -83,52 +70,5 @@ class talent
         return $this->nbDiamants;
     }
 
-    /**
-     * Set age
-     *
-     * @param integer $age
-     *
-     * @return talent
-     */
-    public function setAge($age)
-    {
-        $this->age = $age;
-
-        return $this;
-    }
-
-    /**
-     * Get age
-     *
-     * @return int
-     */
-    public function getAge()
-    {
-        return $this->age;
-    }
-
-    /**
-     * Set status
-     *
-     * @param string $status
-     *
-     * @return talent
-     */
-    public function setStatus($status)
-    {
-        $this->status = $status;
-
-        return $this;
-    }
-
-    /**
-     * Get status
-     *
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->status;
-    }
 }
 
