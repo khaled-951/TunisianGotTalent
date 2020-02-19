@@ -47,3 +47,157 @@
     </ul>
 {% endblock %}
 #}
+{% block body %}
+
+<section class="messages-page">
+    <div class="container">
+        <div class="messages-sec">
+            <h3>Detail FORUM</h3>
+            <div class="row">
+                <div class="col-lg-4 col-md-12 no-pdd">
+                    <div class="msgs-list">
+                        <div class="msg-title" >
+                            <h3><strong>Sujet du forum  </strong> {{ topic.sujet }} </h3>
+
+
+                        </div><!--msg-title end-->
+                        <div class="messages-list">
+                            <ul>
+                                <li class="active">
+                                    <div class="usr-msg-details">
+
+                                        <div class="usr-mg-info">
+                                            <h3>Description </h3>
+                                            <p>{{ topic.description }} </p>
+                                        </div><!--usr-mg-info end-->
+
+                                    </div><!--usr-msg-details end-->
+                                </li>
+                                <li>
+                                    <div class="usr-msg-details">
+                                        <div class="usr-ms-img">
+                                        </div>
+                                        <div class="usr-mg-info">
+                                            <h3>Categorie</h3>
+                                            <p>{{ topic.categorie }}</p>
+                                        </div><!--usr-mg-info end-->
+
+                                    </div><!--usr-msg-details end-->
+                                </li>
+                                <li>
+                                    <div class="usr-msg-details">
+                                        <div class="usr-ms-img">
+                                        </div>
+                                        <div class="usr-mg-info">
+                                            <h3>Date de proposition</h3>
+                                            <p>{% if topic.date %}{{ topic.date|date('Y-m-d H:i:s') }}{% endif %}</p>
+                                        </div><!--usr-mg-info end-->
+
+                                    </div><!--usr-msg-details end-->
+                                </li>
+                                <li>
+                                    <div class="usr-msg-details">
+                                        <div class="usr-ms-img">
+                                        </div>
+                                        <div class="usr-mg-info">
+                                            <h3>Proposition de</h3>
+                                            <p>{{ topic.topicBy }}</p>
+                                        </div><!--usr-mg-info end-->
+                                    </div><!--usr-msg-details end-->
+                                </li>
+                                <li>
+                                    <div class="usr-msg-details">
+                                        <div class="usr-ms-img">
+                                        </div>
+                                        <div class="usr-mg-info">
+                                            {{ form_start(delete_form) }}
+                                            <i class="fas fa-eraser"style="color:red;" ></i><input class="btn btn-danger"  class="fas fa-eraser" type="submit" value="Delete">
+                                            {{ form_end(delete_form) }}
+                                        </div><!--usr-mg-info end-->
+                                    </div><!--usr-msg-details end-->
+                                </li>
+
+                                <li>
+                                    <div class="usr-msg-details">
+                                        <div class="usr-ms-img">
+
+                                        </div>
+                                        <div class="usr-mg-info">
+
+                                    <a class="btn btn-secondary" href="/groupe/topic/{{ topic.groupe.id }}"><i class="fas fa-angle-double-left"></i>Back to the list</a>
+
+                                        </div><!--usr-mg-info end-->
+
+                                    </div><!--usr-msg-details end-->
+                                </li>
+                            </ul>
+                        </div><!--messages-list end-->
+                    </div><!--msgs-list end-->
+                </div>
+                <div class="col-lg-8 col-md-12 pd-right-none pd-left-none">
+                    <div class="main-conversation-box">
+                        <div class="message-bar-head">
+                            <div class="usr-msg-details">
+                                <div class="usr-ms-img">
+
+                                </div>
+                                <div class="usr-mg-info">
+                                    <h3>Commentaire</h3>
+                                </div><!--usr-mg-info end-->
+                            </div>
+                            <a href="#" title=""><i class="fa fa-ellipsis-v"></i></a>
+                        </div><!--message-bar-head end-->
+                        <div class="messages-line">
+                            <div class="main-message-box">
+                                <div class="messg-usr-img">
+                                    <img src="images/resources/m-img1.png" alt="">
+                                </div><!--messg-usr-img end-->
+                                <div class="message-dt">
+                                    <div class="message-inner-dt img-bx">
+                                        <img src="images/resources/mt-img1.png" alt="">
+                                        <img src="images/resources/mt-img2.png" alt="">
+                                        <img src="images/resources/mt-img3.png" alt="">
+                                    </div><!--message-inner-dt end-->
+                                    <span>Sat, Aug 23, 1:08 PM</span>
+                                </div><!--message-dt end-->
+                            </div><!--main-message-box end-->
+                            <div >
+                                {% for replay in replies %}
+                                <div >
+
+                                    <div class="message-inner-dt">
+                                        <p>{{ replay.relayby }}: {{ replay.contenu }}
+                                        <br> <span>date : {{ replay.datereplay|date('Y-m-d') }}</span></p>
+
+                                    </div><!--message-inner-dt end-->
+
+                                </div><!--message-dt end-->
+                                {% endfor %}
+
+                            </div><!--main-message-box end-->
+                            <div class="main-message-box st3">
+                                <div class="message-dt st3">
+                                    <div class="message-inner-dt">
+                                        <p>....</p>
+                                    </div><!--message-inner-dt end-->
+                                    <span>Typing...</span>
+                                </div><!--message-dt end-->
+                                <div class="messg-usr-img">
+                                </div><!--messg-usr-img end-->
+                            </div><!--main-message-box end-->
+                        </div><!--messages-line end-->
+                        <div class="message-send-area">
+                            <form>
+                                <div class="mf-field">
+                                    <a class="btn btn-secondary" href="/groupe/topic/Replay/replay/{{ topic.id }}/new"><i class="fas fa-angle-double-left"></i>Commenter </a>
+                                </div>
+
+                            </form>
+                        </div><!--message-send-area end-->
+                    </div><!--main-conversation-box end-->
+                </div>
+            </div>
+        </div><!--messages-sec end-->
+    </div>
+</section><!--messages-page end-->
+{%  endblock %}

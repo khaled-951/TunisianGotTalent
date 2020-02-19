@@ -1,5 +1,5 @@
 topics_index:
-    path:     /
+    path:     /{groupe_id}
     defaults: { _controller: "GroupeBundle:Topics:index" }
     methods:  GET
 
@@ -9,7 +9,7 @@ topics_show:
     methods:  GET
 
 topics_new:
-    path:     /topics/new
+    path:     /{groupe_id}/topics/new
     defaults: { _controller: "GroupeBundle:Topics:new" }
     methods:  [GET, POST]
 

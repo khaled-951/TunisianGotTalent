@@ -6,6 +6,7 @@ use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\ManyToOne;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Groupe
@@ -26,17 +27,69 @@ class Groupe
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank
+     * @Assert\Length(min=3)
      * @ORM\Column(name="nom", type="string", length=255)
      */
     private $nom;
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank(message="Saisi le nom du groupe")
+     * @Assert\Length(min=10)
      * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
+
+    /**
+     * @var string
+     * @ORM\Column(name="photo", type="string", length=255)
+     */
+    private $photo;
+    /**
+     * @return mixed
+     */
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    /**
+     * @param mixed $file
+     */
+    public function setFile($file)
+    {
+        $this->file = $file;
+    }
+
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    private $file;
+
+    /**
+     * Set photo
+     *
+     * @param string $photo
+     *
+     * @return Groupe
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * Get photo
+     *
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
 
 
     /**
@@ -48,7 +101,7 @@ class Groupe
 
     /**
      * @var string
-     *
+     * @Assert\NotBlank
      * @ORM\Column(name="categorie", type="string", length=255)
      */
     private $categorie;
@@ -172,6 +225,25 @@ class Groupe
     public function setUser($user)
     {
         $this->user = $user;
+    }
+
+    public function getWebPath()
+    {
+        return null===$this->photo ? null : $this->getUploadDir().'/'.$this->photo;
+    }
+    protected function getUploadRootDir()
+    {
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+    protected function getUploadDir()
+    {
+        return 'images';
+    }
+    public function UploadProfilePicture()
+    {
+        $this->file->move($this->getUploadRootDir(),$this->file->getClientOriginalName());
+        $this->photo=$this->file->getClientOriginalName();
+        $this->file=null;
     }
 
 }

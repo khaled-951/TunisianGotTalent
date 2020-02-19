@@ -56,22 +56,27 @@
       <path value="$PROJECT_DIR$/vendor/twig/twig" />
       <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
       <path value="$PROJECT_DIR$/vendor/friendsofsymfony/user-bundle" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-components" />
+      <path value="$PROJECT_DIR$/vendor/knplabs/knp-paginator-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1XTeKaSiy0pMXfxuXxtFBYKPE85" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/web/template/images" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.zend.framework.tool" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\testing_fos_ali\web\template\images" />
+      <recent name="C:\xampp\testing_fos_ali\web\Dashboard" />
       <recent name="C:\wamp64\www\testing_fos_ali\src\FOSBundle\Resources\views" />
       <recent name="C:\wamp64\www\testing_fos_ali\src\FOSBundle\Controller" />
       <recent name="C:\wamp64\www\testing_fos_ali\app\Resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\testing_fos_ali\web\template\images\resources" />
       <recent name="C:\xampp\testing_fos_ali\src\GroupeBundle\Resources\views" />
       <recent name="C:\xampp\testing_fos_ali\src\FOSBundle\Resources\views" />
       <recent name="C:\wamp64\www\testing_fos_ali\web" />
@@ -79,7 +84,6 @@
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
-      <command value="c dump-autoload" />
       <command value="eni" />
       <command value="sxh" />
       <command value="s doctrine:database:create" />
@@ -96,9 +100,13 @@
       <command value="s debug:router" />
       <command value="s doctrine:generate:entity GroupeBundle:Topics" />
       <command value="s doctrine:generate:entity GroupeBundle:Replies" />
-      <command value="s doctrine:schema:update --force" />
       <command value="s doctrine:generate:crud GroupeBundle:Topics" />
       <command value="s doctrine:generate:crud GroupeBundle:Replies" />
+      <command value="c self-update" />
+      <command value="c update" />
+      <command value="c install" />
+      <command value="c dump-autoload" />
+      <command value="s doctrine:schema:update --force" />
       <command value="s server:run" />
     </option>
   </component>
@@ -132,7 +140,15 @@
       <workItem from="1581358426785" duration="18383000" />
       <workItem from="1581430578786" duration="22464000" />
       <workItem from="1581507585010" duration="15458000" />
-      <workItem from="1581539077738" duration="8103000" />
+      <workItem from="1581539077738" duration="22336000" />
+      <workItem from="1581582075884" duration="5632000" />
+      <workItem from="1581635459191" duration="780000" />
+      <workItem from="1581775280083" duration="9825000" />
+      <workItem from="1581792027661" duration="9304000" />
+      <workItem from="1581809402985" duration="1241000" />
+      <workItem from="1581862909959" duration="27774000" />
+      <workItem from="1581970523299" duration="1264000" />
+      <workItem from="1582028774778" duration="28069000" />
     </task>
     <servers />
   </component>

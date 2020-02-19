@@ -2,6 +2,10 @@ groupe_index:
     path:     /
     defaults: { _controller: "GroupeBundle:Groupe:index" }
     methods:  GET
+groupe_detail:
+    path:     /detail/{id_groupe}
+    defaults: { _controller: "GroupeBundle:Groupe:detail" }
+    methods:  GET
 groupe_list:
     path: /list
     defaults: { _controller: "GroupeBundle:Groupe:groups" }

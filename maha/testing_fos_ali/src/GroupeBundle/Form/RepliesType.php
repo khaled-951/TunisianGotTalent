@@ -2,6 +2,7 @@
 
 namespace GroupeBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,7 +14,7 @@ class RepliesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('contenu')->add('date')->add('dateReplay')->add('relayBy')->add('topic');
+        $builder->add('contenu');
     }/**
      * {@inheritdoc}
      */

@@ -10,4 +10,10 @@ namespace GroupeBundle\Repository;
  */
 class RepliesRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findReplies($topic_id)
+    {
+        $query=$this->getEntityManager()->createQuery("SELECT t FROM GroupeBundle:Replies t where t.topic = :topic_id")
+            ->setParameter('topic_id', $topic_id);
+        return $query->getResult();
+    }
 }

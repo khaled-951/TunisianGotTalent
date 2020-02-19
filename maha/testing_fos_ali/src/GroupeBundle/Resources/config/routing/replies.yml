@@ -9,7 +9,7 @@ replies_show:
     methods:  GET
 
 replies_new:
-    path:     /replay/new
+    path:     /replay/{id_topic}/new
     defaults: { _controller: "GroupeBundle:Replies:new" }
     methods:  [GET, POST]
 

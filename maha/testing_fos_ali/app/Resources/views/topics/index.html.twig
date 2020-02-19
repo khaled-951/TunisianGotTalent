@@ -1,47 +1,78 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Topics list</h1>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"></head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <section class="forum-page">
+        <div class="container">
+            <div class="forum-questions-sec">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="forum-questions">
+                            <div class="usr-question">
+                                <div class="header">
+                                    <h2><strong>Liste des </strong> sujets </h2>
+                                </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Sujet</th>
-                <th>Date</th>
-                <th>Categorie</th>
-                <th>Description</th>
-                <th>Topicby</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for topic in topics %}
-            <tr>
-                <td><a href="{{ path('topics_show', { 'id': topic.id }) }}">{{ topic.id }}</a></td>
-                <td>{{ topic.sujet }}</td>
-                <td>{% if topic.date %}{{ topic.date|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ topic.categorie }}</td>
-                <td>{{ topic.description }}</td>
-                <td>{{ topic.topicBy }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('topics_show', { 'id': topic.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('topics_edit', { 'id': topic.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+
+                                        <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Sujet</th>
+                                            <th>Date</th>
+                                            <th>Categorie</th>
+                                            <th>Description</th>
+                                            <th>Topicby</th>
+                                            <th>Actions</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for topic in topics %}
+                                            <tr>
+                                                <td><a href="{{ path('topics_show', { 'id': topic.id }) }}">{{ topic.id }}</a></td>
+                                                <td>{{ topic.sujet }}</td>
+                                                <td>{% if topic.date %}{{ topic.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                                <td>{{ topic.categorie }}</td>
+                                                <td>{{ topic.description }}</td>
+                                                <td>{{ topic.topicBy }}</td>
+                                                <td>
+                                                    <ul>
+                                                        <li>
+                                                            <a href="{{ path('topics_show', { 'id': topic.id }) }}">show</a>
+                                                        </li>
+                                                        <li>
+                                                            {% if topic.groupe.user == app.user.username %}
+                                                            <a href="{{ path('topics_edit', { 'id': topic.id }) }}">edit</a>
+                                                            {% endif %}
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div><!--usr-question end-->
+
+                        </div><!--forum-questions end-->
+
+                    </div>
+
+                </div>
+            </div><!--forum-questions-sec end-->
+        </div>
+    </section><!--forum-page end-->
 
     <ul>
         <li>
-            <a href="{{ path('topics_new') }}">Create a new topic</a>
+            <a   href="/groupe/topic//{{ groupe_id }}/topics/new">Create a new topic</a>
         </li>
     </ul>
 {% endblock %}

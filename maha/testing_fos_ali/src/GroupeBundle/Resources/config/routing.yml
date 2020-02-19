@@ -4,6 +4,9 @@ groupe_groupe:
 topic_topic:
     resource: "@GroupeBundle/Resources/config/routing/topics.yml"
     prefix:   /groupe/topic
+groupe_groupe2:
+    resource: "@GroupeBundle/Resources/config/routing/admin_group.yml"
+    prefix:   /admin/groupe
 topic_replay:
     resource: "@GroupeBundle/Resources/config/routing/replies.yml"
     prefix:   /groupe/topic/Replay

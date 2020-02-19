@@ -12,7 +12,7 @@ class SecurityController extends Controller
         if($user)
         {
             if($user->isSuperAdmin() )
-                return $this->render('@FOS/Security/admin.html.twig');
+                return $this->redirectToRoute('groupe_index2');
             else if(!($user->isSuperAdmin()))
                 return $this->render('@FOS/Security/redirect.html.twig');
         }

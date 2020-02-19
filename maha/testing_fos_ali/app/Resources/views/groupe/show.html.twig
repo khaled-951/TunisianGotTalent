@@ -93,8 +93,14 @@
                     <div class="col-lg-8">
                         <div class="forum-questions">
                             <div class="usr-question">
+                                <div> <ul>
+                                        <li>
+                                            <a href="{{ path('groupe_new') }}">Creer un groupe</a>
+                                        </li>
+                                    </ul>
+                                </div>
                                 <div class="header">
-                                    <h2><strong>Liste des </strong> groupes proposés </h2>
+                                    <h2><strong>Liste de </strong> mes groupes </h2>
                                 </div>
 
                                 <div class="table-responsive">
@@ -105,7 +111,9 @@
                                         <th>Id</th>
                                         <th>NOM</th>
                                         <th>Description</th>
+                                        <td>Photo</td>
                                         <th>Datecreation</th>
+
                                         <th>Categorie</th>
                                         <th>Actions</th>
 
@@ -113,12 +121,12 @@
                                         </thead>
                                         <tbody>
                                     {% for groupe in groupes %}
-                                        {% if groupe.user != app.user.username %}
+                                        {% if groupe.user == app.user.username %}
                                             <tr>
                                                 <td>{{ groupe.id }}</td>
                                                 <td> {{ groupe.nom }}</td>
                                                 <td> {{ groupe.description }}</td>
-
+                                                <td><img alt="" src="{{ asset('images/') }}{{ groupe.photo }}" style="width: 50px;height: 50px"></td>
                                                 <td>{% if groupe.dateCreation %}{{ groupe.dateCreation|date('Y-m-d') }}{% endif %}</td>
                                                 <td>{{ groupe.categorie }}</td>
 
@@ -132,92 +140,108 @@
                                                         </li>
 
                                                         <li>
-                                                            <a href="{{ path('demande', { 'id': groupe.id }) }}"style="color:red;"><i class="fas fa-user-plus"></i>  Rejoindre</a>
+                                                            <a href="/groupe/detail/{{ groupe.id }}" style="color:red;"><i class="fas fa-info-circle"></i>  Detail </a>
                                                         </li>
                                                     </ul>
                                                 </td>
                                             </tr>
                                         {% endif %}
                                     {% endfor %}
+
                                         </tbody>
                                 </table>
-                                </div>
-                            </div><!--usr-question end-->
+
+
+                                    {{ knp_pagination_render(groupes) }}
+
+                                </div><!--usr-question end-->
 
                         </div><!--forum-questions end-->
-                        <nav aria-label="Page navigation example" class="full-pagi">
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link pvr" href="#">Previous</a></li>
-                                <li class="page-item"><a class="page-link active" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">4</a></li>
-                                <li class="page-item"><a class="page-link" href="#">5</a></li>
-                                <li class="page-item"><a class="page-link" href="#">6</a></li>
-                                <li class="page-item"><a class="page-link pvr" href="#">Next</a></li>
-                            </ul>
-                        </nav>
+                        </div>
+
+                        <div class="forum-questions">
+                            <div class="usr-question">
+
+                                <div class="header">
+                                    <h2><strong>Liste des </strong> groupes proposés </h2>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+
+                                        <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>NOM</th>
+                                            <th>Description</th>
+                                            <td>Photo</td>
+                                            <th>Datecreation</th>
+                                            <th>Categorie</th>
+                                            <th>Actions</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for groupe in groupes %}
+                                            {% if groupe.user != app.user.username %}
+                                                <tr>
+                                                    <td>{{ groupe.id }}</td>
+                                                    <td> {{ groupe.nom }}</td>
+                                                    <td> {{ groupe.description }}</td>
+                                                    <td><img alt="" src="{{ asset('images/') }}{{ groupe.photo }}" style="width: 50px;height: 50px"></td>
+                                                    <td>{% if groupe.dateCreation %}{{ groupe.dateCreation|date('Y-m-d') }}{% endif %}</td>
+                                                    <td>{{ groupe.categorie }}</td>
+
+                                                    <td>
+                                                        <ul>
+                                                            <li>
+                                                                <a href="{{ path('demande', { 'id': groupe.id }) }}"style="color:red;"><i class="fas fa-user-plus"></i>  Rejoindre</a>
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            {% endif %}
+                                        {% endfor %}
+
+                                        </tbody>
+                                    </table>
+
+
+
+
+                                </div><!--usr-question end-->
+
+                            </div><!--forum-questions end-->
+                        </div>
                     </div>
+
                     <div class="col-lg-4">
                         <div class="widget widget-user">
-                            <h3 class="title-wd">Top User of the Week</h3>
+                            <h3 class="title-wd"><i class="fas fa-user-friends"></i> List of demands</h3>
                             <ul>
+                                {% for d in demandes %}
+                                    {% if d.Groupe.user == app.user.username %}
                                 <li>
                                     <div class="usr-msg-details">
-                                        <div class="usr-ms-img">
-                                            <img src="images/resources/m-img1.png" alt="">
-                                        </div>
+
                                         <div class="usr-mg-info">
-                                            <h3>Jessica William</h3>
-                                            <p>Graphic Designer </p>
+                                            <h3>{{ d.user.username}}</h3>
+                                            <p>request</p>
                                         </div><!--usr-mg-info end-->
                                     </div>
-                                    <span><img src="images/price1.png" alt="">1185</span>
+                                    <span><a class="btn btn-success" href="/groupe/accept/{{d.Groupe.Id }}/{{ d.user.id }}/{{d.Id}}">Accepter</a></span>
                                 </li>
-                                <li>
-                                    <div class="usr-msg-details">
-                                        <div class="usr-ms-img">
-                                            <img src="images/resources/m-img2.png" alt="">
-                                        </div>
-                                        <div class="usr-mg-info">
-                                            <h3>John Doe</h3>
-                                            <p>PHP Developer</p>
-                                        </div><!--usr-mg-info end-->
-                                    </div>
-                                    <span><img src="images/price2.png" alt="">1165</span>
-                                </li>
-                                <li>
-                                    <div class="usr-msg-details">
-                                        <div class="usr-ms-img">
-                                            <img src="images/resources/m-img3.png" alt="">
-                                        </div>
-                                        <div class="usr-mg-info">
-                                            <h3>Poonam</h3>
-                                            <p>Wordpress Developer </p>
-                                        </div><!--usr-mg-info end-->
-                                    </div>
-                                    <span><img src="images/price3.png" alt="">1120</span>
-                                </li>
-                                <li>
-                                    <div class="usr-msg-details">
-                                        <div class="usr-ms-img">
-                                            <img src="images/resources/m-img4.png" alt="">
-                                        </div>
-                                        <div class="usr-mg-info">
-                                            <h3>Bill Gates</h3>
-                                            <p>C & C++ Developer </p>
-                                        </div><!--usr-mg-info end-->
-                                    </div>
-                                    <span><img src="images/price4.png" alt="">1009</span>
-                                </li>
+                                {% endif %}
+
+                                {% endfor %}
                             </ul>
                         </div><!--widget-user end-->
                         <div class="widget widget-adver">
-                            <img src="images/resources/adver-img.png" alt="">
                         </div><!--widget-adver end-->
                     </div>
                 </div>
             </div><!--forum-questions-sec end-->
         </div>
     </section><!--forum-page end-->
+
 {% endblock %}

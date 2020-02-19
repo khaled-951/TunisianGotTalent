@@ -2,6 +2,7 @@
 
 namespace GroupeBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,8 +14,13 @@ class TopicsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('sujet')->add('date')->add('categorie')->add('description')->add('topicBy')->add('groupe');
-    }/**
+        $builder->add('sujet')
+            ->add('date')
+            ->add('categorie')
+            ->add('description');
+
+    }
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)

@@ -146,6 +146,7 @@ class Replies
     /**
      * Get dateReplay
      *
+     *
      * @return DateTime
      */
     public function getDateReplay()

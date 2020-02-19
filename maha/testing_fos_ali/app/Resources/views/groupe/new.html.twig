@@ -60,9 +60,8 @@
                             <div class="usr-question">
                                 <h3 class="title-wd">Creer un Groupe</h3>
 
-                                {{ form_start(form) }}
+                                {{ form_start(form , {'attr':{'novalidate':'novalidate'}})}}
                                 {{ form_widget(form) }}
-
                                 <input class="btn btn-primary" type="submit" value="Create" />
                                 {{ form_end(form) }}
                             </div><!--usr-question end-->

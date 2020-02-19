@@ -10,6 +10,7 @@
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Datecreation</th>
+                <th>Photo</th>
                 <th>Categorie</th>
                 <th>Actions</th>
             </tr>
@@ -21,6 +22,7 @@
                 <td>{{ groupe.nom }}</td>
                 <td>{{ groupe.description }}</td>
                 <td>{% if groupe.dateCreation %}{{ groupe.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td><img src="{{ asset('images/') }}{{ groupe.photo }}" style="width: 50px;height: 50px"></td>
                 <td>{{ groupe.categorie }}</td>
                 <td>
                     <ul>

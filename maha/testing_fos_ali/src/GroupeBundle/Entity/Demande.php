@@ -22,11 +22,27 @@ class Demande
      */
     private $id;
 
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="user_id", type="integer")
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+
+
+    /**
+     * @ORM\OneToOne(targetEntity="FOSBundle\Entity\User")
+     * @JoinColumn(name="user_id",referencedColumnName="id")
      */
     private $user;
 
@@ -36,21 +52,7 @@ class Demande
      */
      private $groupe;
 
-    /**
-     * @return int
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
 
-    /**
-     * @param int $user
-     */
-    public function setUser($user)
-    {
-        $this->user = $user;
-    }
 
     /**
      * @return mixed

@@ -1,0 +1,15 @@
+groupe_index2:
+  path:     /
+  defaults: { _controller: "GroupeBundle:Groupe:index2" }
+  methods:  GET
+groupe_detail2:
+  path:     /detail
+  defaults: { _controller: "GroupeBundle:Groupe:detail2" }
+  methods:  GET
+groupe_list2:
+  path: /list
+  defaults: { _controller: "GroupeBundle:Groupe:groups2" }
+  methods:  GET
+groupe_delete2:
+  path:     /{id}/delete
+  defaults: { _controller: "GroupeBundle:Groupe:delete2" }

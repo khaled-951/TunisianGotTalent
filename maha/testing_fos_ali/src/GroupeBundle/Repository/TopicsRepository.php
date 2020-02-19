@@ -10,4 +10,10 @@ namespace GroupeBundle\Repository;
  */
 class TopicsRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findTopic($groupe_id)
+    {
+        $query=$this->getEntityManager()->createQuery("SELECT t FROM GroupeBundle:Topics t where t.groupe = :groupe_id")
+            ->setParameter('groupe_id', $groupe_id);
+        return $query->getResult();
+    }
 }

@@ -5,6 +5,7 @@ namespace FOSBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use GroupeBundle\Entity\Groupe;
 
 /**
  * @ORM\Entity
@@ -41,6 +42,14 @@ class User extends BaseUser
      */
     private $groupes;
 
+    public function addgroupe(Groupe $groupe)
+    {
+
+        // for a many-to-one association:
+      //  $groupe->setUser($this);
+
+        $this->groupes->add($groupe);
+    }
     /**
      * @return ArrayCollection
      */

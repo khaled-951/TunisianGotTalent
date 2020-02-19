@@ -31,23 +31,26 @@ class RepliesController extends Controller
      * Creates a new reply entity.
      *
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request,$id_topic)
     {
         $reply = new Replies();
         $form = $this->createForm('GroupeBundle\Form\RepliesType', $reply);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $topic=$this->getDoctrine()->getManager()->getRepository('GroupeBundle:Topics')->find($id_topic);
+            $reply->setTopic($topic);
+            $reply->setDateReplay(new \DateTime("now"));
+            $reply->setRelayBy($this->getUser());
             $em->persist($reply);
             $em->flush();
-
-            return $this->redirectToRoute('replies_show', array('id' => $reply->getId()));
+            return $this->redirectToRoute('topics_show', array('id' => $id_topic));
         }
 
         return $this->render('replies/new.html.twig', array(
             'reply' => $reply,
             'form' => $form->createView(),
+            'id_topic'=>$id_topic,
         ));
     }
 
