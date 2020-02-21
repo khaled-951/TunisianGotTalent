@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {#<h1>Facture</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ facture.id }}</td>
+            </tr>
+            <tr>
+                <th>Datecr</th>
+                <td>{% if facture.dateCr %}{{ facture.dateCr|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('facture_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('facture_edit', { 'id': facture.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>#}
+<main>
+    <div class="main-section">
+        <div class="container">
+            <div class="main-section-data">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 pd-left-none no-pd">
+                        <div class="main-left-sidebar no-margin"></div>
+                    </div>
+                    <div class="col-lg-6 col-md-8 no-pd" >
+
+                        <div class="main-ws-sec">
+                            <div class="posts-section">
+                                <div class="post-bar">
+                                    <div class="post_topbar">
+                                        <div class="usy-dt">
+                                            <img src="" alt="">
+                                            <div class="usy-name">
+                                                <h3>Votre Facture : </h3>
+                                            </div>
+                                        </div>
+
+                                        <div class="epi-sec">
+                                        </div>
+                                        <div class="job_descp">
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <div class="billing-method">
+                                                    <ul>
+                                                        <li>
+                                                            <h3>Au nom du : </h3>
+                                                            <h2> {{ app.user.username  }}</h2>
+                                                        </li>
+                                                        <li>
+                                                            <h3>le don  : </h3>
+                                                            <h2> {{ donation.libDonation }} </h2>
+                                                        </li>
+                                                        <li>
+                                                            <h3>date de recuperation</h3>
+                                                            <td>{% if facture.dateCr %}{{ facture.dateCr|date('Y-m-d') }}{% endif %}</td>
+                                                        </li>
+                                                        <li>
+                                                            <h3>Nombre de diamants :</h3>
+                                                            <span>{{ donation.valeurD }}</span>
+
+                                                        </li>
+                                                    </ul>
+                                            </div>
+
+                                            <h3></h3>
+
+
+
+
+                                            <div class="lt-sec">
+                                                <img src="{{ asset("template/images/lt-icon.png") }}" alt="">
+                                                <h4>Sauvgardez votre Facture</h4>
+                                                <a href="{{ path('facture_pdf', { 'id': facture.id }) }}" title="">Exporter PDF</a>
+
+                                            </div>
+                                        </div>
+
+                                    </div><!--post-bar end-->
+                                    <li>
+                                        <a href="{{ path('donation_index') }}">Retour</a>
+                                    </li>
+
+                                </div></div></div></div></div>
+
+{% endblock %}

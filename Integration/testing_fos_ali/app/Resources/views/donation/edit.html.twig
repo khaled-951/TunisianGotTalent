@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% block css %}
+{% endblock %}
+{% block body %}
+<main>
+    <div class="main-section">
+        <div class="container">
+        <div class="main-section-data">
+            <div class="row">
+            <div class="col-lg-3 col-md-4 pd-left-none no-pd">
+                <div class="main-left-sidebar no-margin"></div>
+            </div>
+    <div class="col-lg-6 col-md-8 no-pd" >
+
+    <div class="main-ws-sec">
+
+    <div class="posts-section">
+
+        <div class="post-topbar">
+            <div class="user-picy">
+                <img src="{{ asset('images/finalogo.png') }}" style="width: 70px;height: 70px">
+            </div>
+
+    <h1>Donation edit</h1>
+
+
+
+
+            {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Edit" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('donation_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+        </div>
+    </div>
+    </div>
+</main>
+{% endblock %}
