@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<main>
+    <div class="main-section">
+        <div class="container">
+            <div class="main-section-data">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 pd-left-none no-pd">
+                        <div class="main-left-sidebar no-margin"></div>
+                    </div>
+                    <div class="col-lg-10 col-md-8 no-pd" >
+                        {% for c in evenement %}
+                        <div class="main-ws-sec">
+                            <div class="posts-section">
+                                <div class="post-bar">
+                                    <div class="post_topbar">
+                                        <div class="usy-dt">
+                                            <img src="" alt="">
+                                            <div class="usy-name">
+                                                <h3  style="color: red; font-size: large;">{{c.titre}} </h3>
+                                                <br>
+
+                                            </div>
+                                        </div>
+
+
+                                        <div class="job_descp">
+
+
+                                            <td><img src="{{ asset('template/images/'~c.image)  }}" style="width: 800px;height: 450px"></td>
+
+
+
+                                        </div>
+
+                                        <div  style="color: #0D47A1; font-size: large;" class="cp-field">
+
+                                            {{ c.description }}
+                                        </div>
+
+                                    </div><!--post-bar end-->
+                                    <br><br><br>
+
+                                </div></div></div>
+
+                        <div class="blog">
+                            <td><a href="{{ path('afficheruser')}}">Retour</a></td>
+
+                        </div>
+                    </div></div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</main>
+                {% endblock %}

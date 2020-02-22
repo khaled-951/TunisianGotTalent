@@ -1,0 +1,8 @@
+publication_publication:
+    resource: "@PublicationBundle/Resources/config/routing/publication.yml"
+    prefix:   /
+commentaire_commentaire:
+    resource: "@PublicationBundle/Resources/config/routing/commentaire.yml"
+    prefix:   /comment
+
+

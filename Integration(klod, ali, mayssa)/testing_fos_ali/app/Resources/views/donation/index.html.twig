@@ -1,0 +1,191 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+<main id="1">
+    <div class="main-section">
+        <div class="container">
+
+
+            <div class="main-section-data">
+
+                <div class="row">
+
+
+                    <div class="col-lg-3 col-md-4 pd-left-none no-pd">
+                        <div class="main-left-sidebar no-margin">
+                            <div class="user-data full-width">
+                                <div class="user-profile">
+                                    <div class="username-dt">
+                                        <div class="usr-pic">
+                                            <h3>{{ app.user.typec }}</h3>
+                                        </div>
+                                    </div><!--username-dt end-->
+                                    <div class="user-specs">
+                                        <h3>{{app.user.username}}</h3>
+
+                                    </div>
+                                </div><!--user-profile end-->
+                                <ul class="user-fw-status">
+                                    <li>
+                                        <h4>Nombre de diamants </h4>
+                                        {% if app.user.typec == 'talent' %}
+                                            {{app.user.nbDiamants}}
+                                        {% endif %}
+                                    </li>
+
+
+                                </ul>
+
+                            </div><!--user-data end-->
+                            {% if app.user.typec == 'talent' %}
+                                <ul class="flw-hr">
+                                    <li><a  href="{{ path('facture_index') }}" title="" class="flww"><i class="la la-plus"></i> Consulter mes factures</a></li>
+                                </ul>
+                            {% endif %}
+                            <div>
+
+                            </div>
+
+                            {% if app.user.typec == 'chasseur' %}
+                            <ul class="flw-hr">
+                                <li><a href="{{ path('donation_new2') }}" title="" class="flww"><i class="la la-plus"></i> Ajouter donation</a></li>
+                            </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-lg-6 col-md-8 no-pd" >
+                        <div class="main-ws-sec">
+
+<div class="posts-section">
+    <div class="post-bar">
+
+        <div class="post_topbar">
+            <div class="usy-dt">
+                <img src="" alt="">
+                <div class="usy-name">
+                    <h3>Donations : </h3>
+
+                </div>
+            </div>
+
+
+            {% for donation in donations %}
+                {% if donation.hidden == '1'  %}
+
+            <div class="epi-sec" id="div1">
+
+                <ul class="bk-links">
+                    <li><a href="{{ path('donation_show', { 'id': donation.id }) }}" title=""><i class="la la-bookmark"></i>details </a></li>
+
+                </ul>
+                {% if (app.user.typec == 'chasseur') and (app.user.id == donation.userid.id) %}
+                <ul class="bk-links">
+                    <li><a href="{{ path('donation_edit', { 'id': donation.id }) }}" title=""><i class="la la-bookmark"></i>edit </a></li>
+
+                </ul>
+                {% endif %}
+            </div>
+        <div class="job_descp">
+
+            <h3>{{ donation.libDonation }}</h3>
+            <ul class="job-dt">
+                <li><a href="#" title=""> <img src="{{ asset('images/diamant.png') }}" style="width: 15px;height: 15px">{{ donation.valeurD }}</a></li>
+
+            </ul>
+            <ul><li><td><h3>Date de creation : </h3>{% if donation.dateCr %}{{ donation.dateCr|date('Y-m-d') }}{% endif %}</td></li></ul>
+            <td><img src="{{ asset('images/') }}{{ donation.photo }}" style="width: 500px;height: 300px"></td>
+            <td><h3>Description</h3>
+                <p>{{ donation.description }}</p>
+            </td>
+            <ul class="skill-tags">
+                <li><a  title="">{{ donation.categorie }}</a></li>
+
+            </ul>
+        </div>
+            {% if app.user.nbDiamants > donation.valeurD %}
+            <div class="job-status-bar">
+                {% if app.user.typec == 'talent' %}
+                <button type="submit"><a href="/facture/{{ donation.id }}/new" >Récuperer</a></button>
+
+                    {% endif %}
+            </div>
+            {% endif %}
+                {% endif %}
+            {% endfor %}
+            {{ knp_pagination_render(donations) }}
+
+        </div><!--post-bar end-->
+
+        {#<div class="product-feed-tab" id="portfolio-dd">
+            <div class="portfolio-gallery-sec">
+                <h3>Portfolio</h3>
+                <div class="gallery_pf">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-6">
+                            {% for donation in donations %}
+                            <div class="gallery_pt">
+                                <img src="{{ asset('images/') }}{{ donation.photo }}" style="width: 500px;height: 300px">
+                                <a href="#" title=""><img src="images/all-out.png" alt=""></a>
+                            </div><!--gallery_pt end-->
+                        </div>
+                       {% endfor %}
+
+                        </div>
+                    </div>
+                </div><!--gallery_pf end-->
+            </div><!--portfolio-gallery-sec end-->
+        </div><!--product-feed-tab end-->#}
+
+
+</div></div></div></div>
+                    <div class="col-lg-3 pd-right-none no-pd">
+                        <div class="right-sidebar">
+                            <div class="widget widget-portfolio">
+                                <div class="wd-heady">
+                                    <h3> Dons du Jour </h3>
+                                    <img src="images/photo-icon.png" alt="">
+                                </div>
+                                <div class="pf-gallery">
+
+                                    <ul>
+                                        {% for donation in d_flash %}
+                                            <li><a id="pic" class="btnMedio"  href="{{ path('donation_show', { 'id': donation.id }) }}" title=""><img src="{{ asset('images/') }}{{ donation.photo }}" style="width: 50px;height: 50px"></a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div><!--pf-gallery end-->
+
+                            </div>
+                            <div class="widget widget-portfolio">
+                            <div class="wd-heady">
+                                <h3> Les dons les moins cher <100</h3>
+                                <img src="images/photo-icon.png" alt="">
+                            </div>
+                            <div class="pf-gallery">
+
+                                <ul>
+                                    {% for donation in d_top5 %}
+                                        {% if donation.valeurD < 100 %}
+                                        <li><a id="pic" class="btnMedio"  href="{{ path('donation_show', { 'id': donation.id }) }}" title=""><img src="{{ asset('images/') }}{{ donation.photo }}" style="width: 50px;height: 50px"></a></li>
+                                        {% endif %}
+                                    {% endfor %}
+                                </ul>
+                            </div><!--pf-gallery end-->
+                            <div class="main-left-sidebar no-margin">
+
+
+                            </div></div>
+
+
+                        </div></div>
+                </div>
+                <script>
+                    $('.btnMedio').click(function(){
+                        $('#1').animate({scrollTop:1000},'50');
+                    });
+                </script>
+{% endblock %}

@@ -1,0 +1,75 @@
+publication_index:
+    path:     /
+    defaults: { _controller: "PublicationBundle:Publication:index" }
+    methods:  GET
+
+publication_show:
+    path:     /{id}/show
+    defaults: { _controller: "PublicationBundle:Publication:show" }
+    methods:  GET
+
+publication_show_one:
+    path:     /post/{id}
+    defaults: { _controller: "PublicationBundle:Publication:showOne" }
+    methods:  GET
+
+publication_show_hashtag:
+    path:     /hashtag/{hashtag}
+    defaults: { _controller: "PublicationBundle:Publication:showHashtag" }
+    methods:  GET
+
+publication_new:
+    path:     /new
+    defaults: { _controller: "PublicationBundle:Publication:new" }
+    methods:  [GET, POST]
+
+publication_newtext:
+    path:     /new_text
+    defaults: { _controller: "PublicationBundle:Publication:newtext" }
+    methods:  [GET, POST]
+
+publication_edit:
+    path:     /{id_publication}/edit
+    defaults: { _controller: "PublicationBundle:Publication:edit" }
+    methods:  [GET, POST]
+
+publication_edittext:
+    path:     /{id_publication}/edit_text
+    defaults: { _controller: "PublicationBundle:Publication:editText" }
+    methods:  [GET, POST]
+
+publication_makeVisible:
+    path:     /{id_publication}/make_visible
+    defaults: { _controller: "PublicationBundle:Publication:makeVisible" }
+    methods:  [GET, POST]
+
+publication_makeUnVisible:
+    path:     /{id_publication}/make_unvisible
+    defaults: { _controller: "PublicationBundle:Publication:makeUnVisible" }
+    methods:  [GET, POST]
+
+publication_delete:
+    path:     /{id_publication}/delete
+    defaults: { _controller: "PublicationBundle:Publication:delete" }
+    methods:  DELETE
+
+publication_admin_view:
+    path:     /admin/view_posts
+    defaults: { _controller: "PublicationBundle:Publication:view" }
+    methods:  GET
+
+publication_upvote:
+    path:     /like/{id_publication}
+    defaults: { _controller: "PublicationBundle:Publication:upVote" }
+    methods:  GET
+
+publication_downvote:
+    path:     /dislike/{id_publication}
+    defaults: { _controller: "PublicationBundle:Publication:downVote" }
+    methods:  GET
+
+publication_viewup:
+    path:     /viewup/{id_publication}
+    defaults: { _controller: "PublicationBundle:Publication:viewUp" }
+    methods:  GET
+
