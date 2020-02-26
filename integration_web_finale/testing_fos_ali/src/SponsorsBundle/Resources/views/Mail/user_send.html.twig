@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+<section class="profile-account-setting">
+    <div class="container">
+        <div class="account-tabs-setting">
+            <div class="row">
+
+                <div class="col-lg-8">
+                    <div class="tab-content" id="">
+
+
+                        <div class=" " id="" role="tabpanel" aria-labelledby="">
+                            <div class="acc-setting">
+                                <h3>Contact {{  sp.namesp}}</h3>
+                                {{ form_start(form) }}
+                                    {#<div class="cp-field">
+                                        <h5>From:</h5>
+                                        <div class="cpp-fiel">
+                                            {{ form_widget(form.mailfrom)}}
+                                        </div>
+                                    </div>#}
+                                    <div class="cp-field">
+                                        <h5>To:</h5>
+                                        <div class="cpp-fiel">
+                                            {{ form_widget(form.mailto)}}
+                                        </div>
+                                    </div>
+                                    <div class="cp-field">
+                                        <h5>Subject</h5>
+                                        <div class="cpp-fiel">
+                                           {{ form_widget(form.subject)}}
+                                        </div>
+                                    </div>
+                                    <div class="cp-field">
+                                        <div class="cp-field">
+                                            <h5>Object:</h5>
+                                            <div class="cpp-fiel">
+                                                {{ form_widget(form.object)}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="save-stngs pd3">
+                                        <ul>
+                                            <li><button type="submit">Send Email</button></li>
+
+                                        </ul>
+                                    </div><!--save-stngs end-->
+                                    {{ form_end(form) }}
+                            </div><!--acc-setting end-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="widget widget-user">
+                        <h3 class="title-wd">Top User of the Week</h3>
+                        <ul>
+                            <li>
+                                <div class="usr-msg-details">
+                                    <div class="usr-ms-img">
+                                        <img src="images/resources/m-img1.png" alt="">
+                                    </div>
+                                    <div class="usr-mg-info">
+                                        <h3>Jessica William</h3>
+                                        <p>Graphic Designer </p>
+                                    </div><!--usr-mg-info end-->
+                                </div>
+                                <span><img src="images/price1.png" alt="">1185</span>
+                            </li>
+                            <li>
+                                <div class="usr-msg-details">
+                                    <div class="usr-ms-img">
+                                        <img src="images/resources/m-img2.png" alt="">
+                                    </div>
+                                    <div class="usr-mg-info">
+                                        <h3>John Doe</h3>
+                                        <p>PHP Developer</p>
+                                    </div><!--usr-mg-info end-->
+                                </div>
+                                <span><img src="images/price2.png" alt="">1165</span>
+                            </li>
+                            <li>
+                                <div class="usr-msg-details">
+                                    <div class="usr-ms-img">
+                                        <img src="images/resources/m-img3.png" alt="">
+                                    </div>
+                                    <div class="usr-mg-info">
+                                        <h3>Poonam</h3>
+                                        <p>Wordpress Developer </p>
+                                    </div><!--usr-mg-info end-->
+                                </div>
+                                <span><img src="images/price3.png" alt="">1120</span>
+                            </li>
+                            <li>
+                                <div class="usr-msg-details">
+                                    <div class="usr-ms-img">
+                                        <img src="images/resources/m-img4.png" alt="">
+                                    </div>
+                                    <div class="usr-mg-info">
+                                        <h3>Bill Gates</h3>
+                                        <p>C & C++ Developer </p>
+                                    </div><!--usr-mg-info end-->
+                                </div>
+                                <span><img src="images/price4.png" alt="">1009</span>
+                            </li>
+                        </ul>
+                    </div><!--widget-user end-->
+                    <div class="widget widget-adver">
+                        <img src="{{ asset('template/images/resources/adver-img.png') }}" alt="">
+                    </div><!--widget-adver end-->
+                </div>
+            </div>
+        </div><!--account-tabs-setting end-->
+    </div>
+</section>
+
+
+{% endblock %}

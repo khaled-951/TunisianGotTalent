@@ -1,0 +1,88 @@
+{% extends 'admin.html.twig' %}
+
+
+{% block body %}
+    <section class="content ecommerce-page">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-5 col-md-7 col-sm-12">
+                <ul class="breadcrumb float-md-left">
+                    <li class="breadcrumb-item"><a href="#"><i class="zmdi zmdi-home"></i> Acceuil</a></li>
+                    <li class="breadcrumb-item"><a href="#">Statistiques</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+
+        <div class="row clearfix">
+            <div class="col-sm-8">
+                <div class="card">
+                    <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+                                <div class="body">
+                                    <h2 class="number count-to m-t-0 m-b-5" data-from="0" data-to="{{ sponsors }}" data-speed="1000" data-fresh-interval="700">{{ sponsors }}</h2>
+                                    <p class="text-muted">Our Sponsors</p>
+                                    <span id="linecustom1">1,4,2,6,5,2,3,8,5,2</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+                                <div class="body">
+                                    <h2 class="number count-to m-t-0 m-b-5" data-from="0" data-to="{{ packs }}" data-speed="2000" data-fresh-interval="700">{{ packs }}</h2>
+                                    <p class="text-muted ">Total Ads</p>
+                                    <span id="linecustom2">2,9,5,5,8,5,4,2,6</span>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 text-center">
+                                <div class="body">
+                                    <h2 class="number count-to m-t-0 m-b-5" data-from="0" data-to="{{ sum }}" data-speed="2000" data-fresh-interval="700">{{ sum }} </h2>
+                                    <p class="text-muted">Total Profit</p>
+                                    <span id="linecustom3">1,5,3,6,6,3,6,8,4,2</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+
+
+                <div class="col-lg-12 col-md-12">
+                    <div class="card weather2">
+                        <div class="city-selected body l-khaki">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="city"><span></span> Our Top Sponsors</div>
+                                    <div class="night">{{ date()|date("l d, m Y")  }}</div>
+                                </div>
+                                <div class="info col-7">
+                                    <div class="temp"><h2></h2></div>
+                                </div>
+                                <div class="icon col-5">
+                                    <img src="assets/images/weather/summer.svg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-striped m-b-0">
+                            <tbody>
+                            {% for sp in pub %}
+                                <tr>
+                                    <td>{{sp.namesp}}</td>
+                                    <td class="font-medium">{{sp.pubnb}}</td>
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    </section>
+{% endblock %}

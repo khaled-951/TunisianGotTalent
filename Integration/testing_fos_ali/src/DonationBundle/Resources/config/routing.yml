@@ -1,9 +1,0 @@
-donation_donation:
-    resource: "@DonationBundle/Resources/config/routing/donation.yml"
-    prefix:   /donation
-donation2:
-    resource: "@DonationBundle/Resources/config/routing/admin_don.yml"
-    prefix:   /admin/donation
-facture_facture:
-    resource: "@DonationBundle/Resources/config/routing/facture.yml"
-    prefix:   /facture

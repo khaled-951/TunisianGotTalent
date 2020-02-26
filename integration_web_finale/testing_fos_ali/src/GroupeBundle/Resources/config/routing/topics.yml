@@ -1,0 +1,32 @@
+topics_index:
+    path:     /{groupe_id}
+    defaults: { _controller: "GroupeBundle:Topics:index" }
+    methods:  GET
+
+topics_show:
+    path:     /topics/{id}/show
+    defaults: { _controller: "GroupeBundle:Topics:show" }
+    methods:  GET
+topic_asc:
+    path:     /asc/{groupe_id}
+    defaults: { _controller: "GroupeBundle:Topics:asc" }
+topics_new:
+    path:     /{groupe_id}/topics/new
+    defaults: { _controller: "GroupeBundle:Topics:new" }
+    methods:  [GET, POST]
+topic_rate:
+    path:     /rate/{groupe_id}
+    defaults: { _controller: "GroupeBundle:Topics:ascN" }
+topics_edit:
+    path:     /topics/{id}/edit
+    defaults: { _controller: "GroupeBundle:Topics:edit" }
+    methods:  [GET, POST]
+
+topics_delete:
+    path:     /topics/{id}/delete
+    defaults: { _controller: "GroupeBundle:Topics:delete" }
+    methods:  DELETE
+topics_rate:
+    path:   topics/rate/{id}/{t}/{note}
+    defaults: { _controller: "GroupeBundle:Topics:addRate" }
+    methods:  [GET,POST]

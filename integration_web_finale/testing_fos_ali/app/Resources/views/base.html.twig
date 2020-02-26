@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    {% block stylesheets %}
+        <link rel="stylesheet" type="text/css" href="{{ asset('template/css/animate.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('template/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('template/css/line-awesome.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('template/css/line-awesome-font-awesome.min.css')}}">
+        <link href="{{ asset('template/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="{{ asset('template/css/font-awesome.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('template/css/jquery.mCustomScrollbar.min.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('template/lib/slick/slick.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('template/lib/slick/slick-theme.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('template/css/style.css')}}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('template/css/responsive.css')}}">
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+{% block bodydef %}<body oncontextmenu="return false;">{% endblock %}
+{% block header %}
+    <header>
+        <div class="container">
+            <div class="header-data">
+                <div class="logo">
+                    <a href="index.html" title=""><img src="{{ asset('template/images/logo.png') }}" alt=""></a>
+                </div><!--logo end-->
+                <div class="search-bar">
+                    <form>
+                        <input type="text" onchange="search_for" id="search_for" name="search" placeholder="Search...">
+                        <button type="submit"><i class="la la-search"></i></button>
+                    </form>
+                </div><!--search-bar end-->
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="{{path('publication_index')}}" title="">
+                                <span><img src="{{ asset('template/images/icon1.png')}}" alt=""></span>
+                                Acceuil
+                            </a>
+                        </li>
+
+                            {% if app.user %}
+                                <li>
+                                {% if app.user.typec == "chasseur" %}
+
+                            <a href="#" title="">
+                                <span><img src="{{ asset('template/images/icon2.png')}}" alt=""></span>
+                                Evenements
+                            </a>
+                            <ul>
+                                <li><a href="{{ path('ajouter')}}" title="">Ajouter Evenement</a></li>
+                                <li><a href="{{ path('afficher')}}" title="">Afficher Evenements</a></li>
+                            </ul>
+                                {% elseif app.user.typec == "talent" %}
+                                    <a href="{{ path('afficheruser')}}" title="">
+                                        <span><img src="{{ asset('template/images/icon2.png')}}" alt=""></span>
+                                        Evenements
+                                    </a>
+                                 {% endif %}
+                                </li>
+                            {% endif %}
+                        {% if app.user %}
+                        <li>
+                            <a href="{{ path('donation_index')}}" title="">
+                                <span><img src="{{ asset('template/images/icon3.png')}}" alt=""></span>
+                                Donations
+                            </a>
+                        </li>
+                        {% endif %}
+                        {% if app.user %}
+                        <li>
+                            <a href="{{ path('groupe_index')}}" title="">
+                                <span><img src="{{ asset('template/images/icon4.png')}}" alt=""></span>
+                                Groupes
+                            </a>
+
+                        </li>
+                        {% endif %}
+                        {% if app.user %}
+                        <li>
+                            <a href="#" title="">
+                                <span><img src="{{ asset('template/images/icon5.png')}}" alt=""></span>
+                                Sponsors
+                            </a>
+                            <ul>
+                                <li><a href="{{ path('sponsor_user_index')}}" title="">Afficher Sponsors</a></li>
+                                <li><a href="{{ path('user_inbox')}}" title="">Inbox</a></li>
+                            </ul>
+                        </li>
+                        {% endif %}
+                            {% if app.user %}
+                                <li>
+                            <a href="#" title="" class="not-box-openm">
+                                <span><img src="{{ asset('template/images/icon6.png')}}" alt=""></span>
+                                Reclamation
+                            </a>
+                            <ul>
+                                <li><a href="{{ path('readreclamation')}}" title="">Mes Reclamations</a></li>
+                                <li><a href="{{ path('createreclamation')}}" title="">Passer Une Reclamation</a></li>
+                            </ul>
+                    </li>
+                            {% endif %}
+                        {% if app.user %}
+                            {% if app.user.typec == "chasseur" %}
+                        <li>
+                            <a href="#" title="" class="not-box-open">
+                                <span><img src="{{ asset('template/images/icon7.png')}}" alt=""></span>
+                                Notification ({{ mgilet_notification_unseen_count(app.user) }})
+                            </a>
+                            <div class="notification-box noti" id="notification">
+                                <div class="nt-title">
+                                    <h4>Setting</h4>
+                                    <a href="#" title="">Clear all</a>
+                                </div>
+                                <div class="nott-list">
+                                    <div class="notfication-details">
+                                        <div class="noty-user-img">
+                                            <img src="{{ asset('template/images/resources/ny-img1.png')}}" alt="">
+                                        </div>
+                                        <div class="notification-info">
+                                            <h3><a href="#" title="">{{ mgilet_notification_render(app.user) }}</h3>
+                                            <span>2 min ago</span>
+                                        </div><!--notification-info -->
+                                    </div>
+                                    <div class="view-all-nots">
+                                        <a href="#" title="">View All Notification</a>
+                                    </div>
+                                </div><!--nott-list end-->
+                            </div><!--notification-box end-->
+                        </li>
+                        {% endif %}
+                        {% endif %}
+                    </ul>
+                </nav><!--nav end-->
+                <div class="menu-btn">
+                    <a href="#" title=""><i class="fa fa-bars"></i></a>
+                </div><!--menu-btn end-->
+                {% if app.user %}
+                <div class="user-account">
+                    <div class="user-info">
+                        <img src="{{ asset('template/images/resources/user.png')}}" alt="">
+                        <a href="#" title="">{{ app.user.username }}</a>
+                        <i class="la la-sort-down"></i>
+                    </div>
+                    <div class="user-account-settingss" id="users">
+
+                        <h3 class="tc"><a href="{{ path('fos_user_security_logout') }}" title="">Logout</a></h3>
+                    </div><!--user-account-settingss end-->
+                </div>
+                {% else %}
+                <div class="user-account">
+                    <div class="user-info">
+                        <a href="{{path('fos_user_security_login')}}" title="">
+                            <span><img src="{{ asset('template/images/icon4.png')}}" alt=""></span>
+                            Login
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+            </div><!--header-data end-->
+        </div>
+    </header><!--header end-->
+{% endblock %}
+{% block body %}{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('template/js/jquery.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('template/js/popper.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('template/js/bootstrap.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('template/js/jquery.mCustomScrollbar.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('template/lib/slick/slick.min.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('template/js/scrollbar.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('template/js/script.js')}}"></script>{% endblock %}
+</body>
+</html>

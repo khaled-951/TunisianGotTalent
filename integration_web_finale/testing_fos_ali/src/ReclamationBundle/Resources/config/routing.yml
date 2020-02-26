@@ -1,0 +1,65 @@
+readreclamation:
+    path:     /readreclamation
+    defaults: { _controller: ReclamationBundle:reclamation:read }
+createreclamation:
+    path:     /createreclamation
+    defaults: { _controller: ReclamationBundle:reclamation:create }
+deletereclamation:
+    path:     /deletereclamation/{id}
+    defaults: { _controller: ReclamationBundle:reclamation:delete }
+updatereclamation:
+    path:     /updatereclamation/{id}
+    defaults: { _controller: ReclamationBundle:reclamation:update }
+consultereclamation:
+    path:     /consultereclamation/{id}
+    defaults: { _controller: ReclamationBundle:reclamation:consulte }
+
+
+rating:
+    path:     /rating
+    defaults: { _controller: ReclamationBundle:avis:create }
+
+
+
+consulte:
+    path:     /consulte/{id}
+    defaults: { _controller: ReclamationBundle:reclamation:consulterec }
+read:
+    path:     /admin/read
+    defaults: { _controller: ReclamationBundle:reclamation:afficherrec }
+tri:
+    path:     /admin/tri
+    defaults: { _controller: ReclamationBundle:reclamation:trier }
+delete:
+    path:     /delete/{id}
+    defaults: { _controller: ReclamationBundle:reclamation:deleterec }
+traiter:
+    path:     /admin/traiter/{id}
+    defaults: { _controller: ReclamationBundle:reclamation:repondre }
+avis:
+    path:     /admin/avis
+    defaults: { _controller: ReclamationBundle:avis:afficher }
+deleteavis:
+    path:     /deleteavis/{id}
+    defaults: { _controller: ReclamationBundle:avis:delete }
+repondre:
+    path:     /repondre/{id}
+    defaults: { _controller: ReclamationBundle:reclamation:repondre }
+stat:
+    path:     /admin/stat
+    defaults: { _controller: ReclamationBundle:avis:index }
+Recherche:
+    path:     /Recherche
+    defaults: { _controller: ReclamationBundle:reclamation:Recherche }
+test2:
+    path:     /test2
+    defaults: { _controller: ReclamationBundle:reclamation:test2 }
+    methods: [post]
+
+ajax_search_s:
+    path:     /search
+    defaults: { _controller: ReclamationBundle:reclamation:search }
+
+archiver:
+    path:     /archiver/{id}
+    defaults: { _controller: ReclamationBundle:avis:archiver }

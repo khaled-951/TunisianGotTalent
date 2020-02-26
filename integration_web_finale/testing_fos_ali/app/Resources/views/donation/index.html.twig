@@ -1,0 +1,192 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+    <main id="1">
+        <div class="main-section">
+            <div class="container">
+
+
+                <div class="main-section-data">
+
+                    <div class="row">
+
+
+                        <div class="col-lg-3 col-md-4 pd-left-none no-pd">
+                            <div class="main-left-sidebar no-margin">
+                                <div class="user-data full-width">
+                                    <div class="user-profile">
+                                        <div class="username-dt">
+                                            <div class="usr-pic">
+                                                <h3>{{ app.user.typec }}</h3>
+                                            </div>
+                                        </div><!--username-dt end-->
+                                        <div class="user-specs">
+                                            <h3>{{app.user.username}}</h3>
+
+                                        </div>
+                                    </div><!--user-profile end-->
+                                    <ul class="user-fw-status">
+                                        <li>
+                                            <h4>Nombre de diamants </h4>
+                                            {% if app.user.typec == 'talent' %}
+                                                {{app.user.nbDiamants}}
+                                            {% endif %}
+                                        </li>
+
+
+                                    </ul>
+
+                                </div><!--user-data end-->
+
+                                <div>
+
+                                </div>
+
+                                {% if app.user.typec == 'chasseur' %}
+                                    <div class="blog">
+                                        <a href="{{ path('donation_new2') }}" title="" class="flww"><i class="la la-plus"></i> Ajouter donation</a>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-lg-6 col-md-8 no-pd" >
+                            <div class="main-ws-sec">
+
+                                <div class="posts-section">
+                                    <div class="post-bar">
+
+                                        <div class="post_topbar">
+                                            <div class="usy-dt">
+                                                <img src="" alt="">
+                                                <div class="usy-name">
+                                                    <h3 >                                              Liste des  Dons  </h3>
+                                                    <br> <br> <br> <br>
+
+                                                </div>
+                                            </div>
+
+
+                                            {% for donation in donations %}
+                                                {% if donation.hidden == '1'  %}
+
+                                                    <div class="epi-sec" id="div1">
+
+                                                        <div class="bk-links" style="margin-left: 0.25cm">
+                                                            <a href="{{ path('donation_show', { 'id': donation.id }) }}" title=""><i class="fas fa-book-open"></i>  </a>
+
+                                                        </div>
+
+                                                        {% if (app.user.typec == 'chasseur') and (app.user.id == donation.userid.id) %}
+                                                            <div class="bk-links">
+                                                                <a href="{{ path('donation_edit', { 'id': donation.id }) }}" title=""><i class="far fa-edit"></i> </a>
+
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+
+                                                    <div class="job_descp">
+
+                                                        <h3>{{ donation.libDonation }}</h3>
+                                                        <div class="usy-name">
+
+                                                            <span><img src="{{ asset('/template/images/clock.png')}}" alt=""></span>
+                                                        </div>
+                                                        <ul><li><td><h3>{% if ("now" |date("U") + 3600  - donation.dateCr |date("U") ) |date("d") == 1 %}   Today <div class="spinner-grow text-danger"></div>  {% elseif  ("now" |date("U") + 3600  - donation.dateCr |date("U") ) |date("d") %} {{ ("now" |date("U") + 3600  - donation.dateCr |date("U") ) |date("d") }} Days Ago {% endif %}</h3> </td></li></ul>
+                                                        <ul class="job-dt">
+                                                            <li><a href="#" title=""> <img src="{{ asset('images/diamant.png') }}" style="width: 15px;height: 15px">{{ donation.valeurD }}</a></li>
+
+                                                        </ul>
+
+
+
+                                                        <td><img src="{{ asset('images/') }}{{ donation.photo }}" style="width: 500px;height: 300px"></td>
+                                                        <td><h3>Description</h3>
+                                                            <p>{{ donation.description }}</p>
+                                                        </td>
+                                                        <ul class="skill-tags">
+                                                            <li><a  title="">{{ donation.categorie }}</a></li>
+
+                                                        </ul>
+                                                    </div>
+                                                    {% if app.user.nbDiamants > donation.valeurD %}
+                                                        <div class="job-status-bar">
+                                                            {% if app.user.typec == 'talent' %}
+                                                                <div class="blog">
+
+                                                                    <span> <a href="/facture/{{ donation.id }}/new"  ><i class="fas fa-donate">Récuperer</i></a></span>
+
+                                                                </div>
+                                                            {% endif %}
+
+
+                                                        </div>
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                            {{ knp_pagination_render(donations) }}
+
+                                        </div><!--post-bar end-->
+
+
+                                    </div>
+                                </div>
+
+
+                            </div></div>
+
+                        <div class="col-lg-3 col-md-4 pd-right-none no-pd">
+                            <div class="right-sidebar">
+                                <div class="widget widget-portfolio">
+                                    <div class="wd-heady">
+                                        <h3> Dons du Jour </h3>
+                                        <img src="images/photo-icon.png" alt="">
+                                    </div>
+                                    <div class="pf-gallery">
+
+                                        <ul>
+                                            {% for donation in d_flash %}
+                                                <li><a id="pic" class="btnMedio"  href="{{ path('donation_show', { 'id': donation.id }) }}" title=""><img src="{{ asset('images/') }}{{ donation.photo }}" style="width: 50px;height: 50px"></a></li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div><!--pf-gallery end-->
+
+                                </div>
+                                <div class="widget widget-portfolio">
+                                    <div class="wd-heady">
+                                        <h3> Les dons les moins cher <100</h3>
+                                        <img src="images/photo-icon.png" alt="">
+                                    </div>
+                                    <div class="pf-gallery">
+
+                                        <ul>
+                                            {% for donation in d_top5 %}
+                                                {% if donation.valeurD < 100 %}
+                                                    <li><a id="pic" class="btnMedio"  href="{{ path('donation_show', { 'id': donation.id }) }}" title=""><img src="{{ asset('images/') }}{{ donation.photo }}" style="width: 50px;height: 50px"></a></li>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </ul>
+
+                                        <!--pf-gallery end-->
+                                    </div></div>
+
+                                {% if app.user.typec == 'talent' %}
+                                    <ul class="blog">
+                                        <li><a  href="{{ path('facture_index') }}" title="" class="flww"><i class="la la-plus"></i> Consulter mes factures</a></li>
+                                    </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    </div></div></main>
+
+    <script>
+        $('.btnMedio').click(function(){
+            $('#1').animate({scrollTop:1000},'50');
+        });
+    </script>
+{% endblock %}

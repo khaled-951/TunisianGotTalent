@@ -1,0 +1,92 @@
+{% extends 'admin.html.twig' %}
+{% block body %}
+<section class="content ecommerce-page">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-5 col-md-7 col-sm-12">
+                <ul class="breadcrumb float-md-left">
+                    <li class="breadcrumb-item"><a href="#"><i class="zmdi zmdi-home"></i> Acceuil</a></li>
+                    <li class="breadcrumb-item"><a href="#">Sponsors</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>    <div class="row clearfix">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="header">
+                            <h2><strong>Sponsors</strong> List  </h2>
+                            <ul class="header-dropdown">
+                                <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> <i class="zmdi zmdi-more"></i> </a>
+                                    <ul class="dropdown-menu dropdown-menu-right slideUp">
+                                        <li><a href="{{ path('sponsor_new') }}">new sponsor</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="body table-responsive members_profiles">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th style="width:60px;">Sponsor</th>
+                                    <th>Sponsor ID</th>
+                                    <th>Sponsor Name</th>
+                                    <th>Description</th>
+                                    <th>Email</th>
+                                    <th>Address</th>
+                                    <th>Phone</th>
+                                    <th>Action</th>
+
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                {% for sponsor in sponsors %}
+                                    <tr>
+                                        <td>
+                                            <img class="rounded-circle" src="{{ asset('uploads/images/' ~ sponsor.logo) }}" alt="user" width="40" height="40">
+                                        </td>
+
+                                        <td><a href="{{ path('sponsor_show', { 'idsp': sponsor.idsp }) }}">{{ sponsor.idsp }}</a></td>
+                                        <td>
+                                            <a href="javascript:void(0);">{{ sponsor.namesp }}</a>
+                                        </td>
+                                        <td>{{ sponsor.description }}</td>
+                                        <td>{{ sponsor.email }}</td>
+                                        <td>{{ sponsor.address }}</td>
+                                        <td>{{ sponsor.tel }}</td>
+
+
+                                        <td>
+                                            <ul>
+                                                <li>
+                                                    <a href="{{ path('sponsor_show', { 'idsp': sponsor.idsp }) }}">show</a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{ path('sponsor_edit', { 'idsp': sponsor.idsp }) }}">edit</a>
+                                                </li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+
+
+                                </tbody>
+                            </table>
+                            <div class="card">
+                                <div class="body">
+                                    <ul class="pagination pagination-primary center m-b-0">
+                                        {{ knp_pagination_render(sponsors) }}
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="navigation text-content">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+</section>
+
+{% endblock %}

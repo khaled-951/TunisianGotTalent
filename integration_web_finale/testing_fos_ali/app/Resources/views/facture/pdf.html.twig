@@ -1,0 +1,304 @@
+
+
+
+{#
+<main>
+    <div class="main-section">
+        <div class="container">
+            <div class="main-section-data">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 pd-left-none no-pd">
+                        <div class="main-left-sidebar no-margin"></div>
+                    </div>
+                    <div class="col-lg-6 col-md-8 no-pd" >
+
+                        <div class="main-ws-sec">
+                            <div class="posts-section">
+                                <div class="post-bar">
+                                    <div class="post_topbar">
+                                        <div class="usy-dt">
+                                            <img src="" alt="">
+                                            <div class="usy-name">
+                                               <center> <h3>Votre Facture : </h3></center>
+                                            </div>
+                                        </div>
+
+                                        <div class="epi-sec">
+                                        </div>
+                                        <div class="job_descp">
+                                            <br>
+                                            <br>
+                                            <br>
+                                            <div class="billing-method">
+                                                <ul>
+                                                    <li>
+                                                        <h2>Au nom du : </h2>
+                                                        <span> {{ app.user.username  }}</span>
+                                                    </li>
+                                                    <li>
+                                                        <h2>le don  : </h2>
+                                                        <span>   {{ donation.libDonation }} </span>
+                                                    </li>
+                                                    <li>
+                                                        <h2>date de recuperation</h2>
+                                                        <td>{% if facture.dateCr %}{{ facture.dateCr|date('Y-m-d') }}{% endif %}</td>
+                                                    </li>
+                                                    <li>
+                                                        <h2>Nombre de diamants :</h2>
+                                                        <span>{{ donation.valeurD }}</span>
+
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+                                            <h3></h3>
+
+
+
+
+                                            <div class="lt-sec">
+                                                <img src="{{ asset("template/images/lt-icon.png") }}" alt="">
+                                               <center><h4>Contactez Notre support en cas de problème</h4> </center>
+
+                                            </div>
+                                        </div>
+
+                                    </div><!--post-bar end-->
+
+
+                                </div></div></div></div></div>
+
+
+    {#<h1>Facture</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ facture.id }}</td>
+            </tr>
+            <tr>
+                <th>Datecr</th>
+                <td>{% if facture.dateCr %}{{ facture.dateCr|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('facture_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('facture_edit', { 'id': facture.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>#}
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Facture</title>
+
+    <style>
+        .invoice-box {
+            max-width: 800px;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #eee;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .15);
+            font-size: 16px;
+            line-height: 24px;
+            font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+            color: #555;
+        }
+
+        .invoice-box table {
+            width: 100%;
+            line-height: inherit;
+            text-align: left;
+        }
+
+        .invoice-box table td {
+            padding: 5px;
+            vertical-align: top;
+        }
+
+        .invoice-box table tr td:nth-child(2) {
+            text-align: right;
+        }
+
+        .invoice-box table tr.top table td {
+            padding-bottom: 20px;
+        }
+
+        .invoice-box table tr.top table td.title {
+            font-size: 45px;
+            line-height: 45px;
+            color: #333;
+        }
+
+        .invoice-box table tr.information table td {
+            padding-bottom: 40px;
+        }
+
+        .invoice-box table tr.heading td {
+            background: #eee;
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+        }
+
+        .invoice-box table tr.details td {
+            padding-bottom: 20px;
+        }
+
+        .invoice-box table tr.item td{
+            border-bottom: 1px solid #eee;
+        }
+
+        .invoice-box table tr.item.last td {
+            border-bottom: none;
+        }
+
+        .invoice-box table tr.total td:nth-child(2) {
+            border-top: 2px solid #eee;
+            font-weight: bold;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .invoice-box table tr.top table td {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+
+            .invoice-box table tr.information table td {
+                width: 100%;
+                display: block;
+                text-align: center;
+            }
+        }
+
+        /** RTL **/
+        .rtl {
+            direction: rtl;
+            font-family: Tahoma, 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+        }
+
+        .rtl table {
+            text-align: right;
+        }
+
+        .rtl table tr td:nth-child(2) {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+<div class="invoice-box">
+    <table cellpadding="0" cellspacing="0">
+        <tr class="top">
+            <td colspan="2">
+                <table>
+                    <tr>
+                        <td class="title">
+                            <img src="https://1adn3cp4l2-flywheel.netdna-ssl.com/wp-content/uploads/2013/10/Donation-plugins-for-WordPress1.jpg" style="width:100%; max-width:300px;">
+                        </td>
+
+                        <td>
+                            Don récuperé<br>
+                            Le : {% if facture.dateCr %}{{ facture.dateCr|date('Y-m-d') }}{% endif %}<br>
+                            Due: {% if facture.dateCr %}{{ facture.dateCr|date('Y-m-d') }}{% endif %}
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr class="information">
+            <td colspan="2">
+                <table>
+                    <tr>
+                        <td>
+                            Au Nom du : .<br>
+                            {{ app.user.username  }}<br>
+
+                        </td>
+
+                        <td>
+                            Le Don : <br>
+                            {{ donation.libDonation }}<br>
+
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr class="heading">
+            <td>
+                Récuperation  sur la platforme Tunisian_Got_Talent
+            </td>
+
+            <td>
+
+            </td>
+        </tr>
+
+        <tr class="details">
+            <td>
+                Etat
+            </td>
+
+            <td>
+                Succés
+            </td>
+        </tr>
+
+        <tr class="heading">
+            <td>
+                Le Don
+            </td>
+
+            <td>
+                Valeur
+            </td>
+        </tr>
+
+        <tr class="item">
+            <td>
+                {{ donation.libDonation }}
+            </td>
+
+            <td>
+                {{ donation.valeurD }}
+            </td>
+        </tr>
+
+
+
+
+
+        <tr class="total">
+            <td></td>
+
+            <td>
+                Total: {{ donation.valeurD }}
+                <br>
+                <img src="https://blog.neocamino.com/wp-content/uploads/2013/05/signature-523237_1920-980x641.jpg" style="width:100%; max-width:100px;">
+
+            </td>
+
+
+
+        </tr>
+    </table>
+</div>
+</body>
+</html>
+

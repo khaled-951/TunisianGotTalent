@@ -1,0 +1,114 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <section class="banner">
+
+
+
+
+        <span class="banner-title"> Nos evenements</span>
+    </section>
+    <br><br>
+    <br><br><br><br>
+    {% for message in app.flashes('error') %}
+        <div class="flash-error">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+
+    <br><br>
+
+    <section class="services">
+        <div class="container">
+
+            <div class="row">
+
+                {%  for c in evenement %}
+                    {% if app.user.typec == 'talent' %}
+                    <div class="col-md-4 col-sm-12">
+                        <div class="blog">
+                            <h2 align="centre" style="color: red"> {{ c.titre }}</h2>
+
+
+
+                            <img src="{{ asset('template/images/'~c.image)  }}" alt="image" style="width: 10cm;height: 7cm"/>
+                            <br><br><br><br><br><br><br><br><br>
+
+
+
+
+
+                            <h2  style="color: #0D47A1; font-size: medium;">Du {{ c.datedebut |date('Y-m-d')}} jusqu'à {{ c.datefin |date('Y-m-d')}}</h2>
+                            <h2 align="centre">
+
+                                <p style="color: #0D47A1; font-size: large;">{{ c.typedetalent }}</p><br>
+                                <p style="color: #0D47A1; font-size: large;">Vous avez besoin du {{ c.cout }}    <i class="fa fa-diamond"></i></p>
+
+
+                            </h2>
+
+                            <a href="{{ path('detailuser',{'id':c.id_evenement}) }}">Detail</a>
+                            <td>
+
+                                {% if (c.participe == false) and (c.cout <= 500) and (c.nbparticipant != 0) %}
+
+                                    <a href="{{ path('ajouterticket',{'id':c.id_evenement}) }}">Participer</a>
+
+                                {% elseif c.participe == true %}
+                                    <a href="#">vous avez déja participé</a>
+
+                                {% elseif c.nbparticipant == 0   %}
+                                    <a href="#">Competition pleine</a>
+
+
+                                {% elseif  c.cout > 500 %}
+                                    <br><br><br>
+                        <p style="color: red">gagner plus de diamond et reviens  </p>
+
+                                {% endif %}
+
+
+                            </td>
+
+                        </div>
+                    </div>
+                        {% else %}
+                        <script>
+                            window.alert("Seulement le Talent peut voir cette page");
+
+                        </script>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="navigation text-center">
+                {{ knp_pagination_render(evenement) }}
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <footer>
+        <div class="footy-sec mn no-margin">
+            <div class="container">
+                <ul>
+                    <li><a href="help-center.html" title="">Help Center</a></li>
+                    <li><a href="about.html" title="">About</a></li>
+                    <li><a href="#" title="">Privacy Policy</a></li>
+                    <li><a href="#" title="">Community Guidelines</a></li>
+                    <li><a href="#" title="">Cookies Policy</a></li>
+                    <li><a href="#" title="">Career</a></li>
+                    <li><a href="forum.html" title="">Forum</a></li>
+                    <li><a href="#" title="">Language</a></li>
+                    <li><a href="#" title="">Copyright Policy</a></li>
+                </ul>
+                <p><img src="images/copy-icon2.png" alt="">Copyright 2019</p>
+
+            </div>
+        </div>
+    </footer><!--footer end-->
+
+{% endblock %}

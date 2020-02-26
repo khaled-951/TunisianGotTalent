@@ -1,0 +1,85 @@
+
+
+
+pack_new:
+    path:     /admin/pack/new
+    defaults: { _controller: SponsorsBundle:Pack:new }
+
+pack_index:
+    path:     /admin/pack
+    defaults: { _controller: SponsorsBundle:Pack:index }
+
+pack_show:
+    path:     /admin/pack/show/{idad}
+    defaults: { _controller: SponsorsBundle:Pack:show }
+
+pack_edit:
+    path:     /admin/pack/edit/{idad}
+    defaults: { _controller: SponsorsBundle:Pack:edit }
+
+pack_delete:
+    path:     /admin/pack/delete/{idad}
+    defaults: { _controller: SponsorsBundle:Pack:delete }
+
+
+
+
+sponsor_stat:
+    path:     /admin/sponsor/stat
+    defaults: { _controller: SponsorsBundle:Sponsor:dash }
+
+sponsor_new:
+    path:     /admin/sponsor/new
+    defaults: { _controller: SponsorsBundle:Sponsor:new }
+
+sponsor_index:
+    path:     /admin/sponsor
+    defaults: { _controller: SponsorsBundle:Sponsor:index }
+
+sponsor_user_index:
+    path:     /sponsor/user
+    defaults: { _controller: SponsorsBundle:Sponsor:user_index }
+
+sponsor_show:
+    path:     /admin/sponsor/show/{idsp}
+    defaults: { _controller: SponsorsBundle:Sponsor:show }
+
+sponsor_user_show:
+    path:     /sponsor/user/show/{idsp}
+    defaults: { _controller: SponsorsBundle:Sponsor:user_show }
+
+sponsor_edit:
+    path:     /admin/sponsor/edit/{idsp}
+    defaults: { _controller: SponsorsBundle:Sponsor:edit }
+sponsor_delete:
+    path:     /admin/sponsor/delete/{idsp}
+    defaults: { _controller: SponsorsBundle:Sponsor:delete }
+
+
+
+
+
+admin_inbox:
+    path:     /admin/inbox
+    defaults: { _controller: SponsorsBundle:Mail:inbox }
+admin_send:
+    path:     /admin/send/{idsp}
+    defaults: { _controller: SponsorsBundle:Mail:send }
+admin_compose:
+    path:     /admin/compose
+    defaults: { _controller: SponsorsBundle:Mail:compose }
+admin_show:
+    path:     /admin/mail/show/{id}
+    defaults: { _controller: SponsorsBundle:Mail:show }
+
+
+
+user_inbox:
+    path:     /inbox/user
+    defaults: { _controller: SponsorsBundle:Mail:user_inbox }
+user_send:
+    path:     /send/user/{idsp}
+    defaults: { _controller: SponsorsBundle:Mail:user_send }
+user_show:
+    path:     /mail/user/show/{id}
+    defaults: { _controller: SponsorsBundle:Mail:user_show }

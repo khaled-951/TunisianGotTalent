@@ -1,0 +1,87 @@
+
+{% extends 'base.html.twig' %}
+{% block body %}
+
+
+
+
+    <section class="banner">
+
+
+        <span class="banner-title"> Nos evenements</span>
+    </section>
+    <br><br><br><br>
+
+
+    <section class="services">
+
+        <div class="container">
+
+
+            <div class="row">
+    {%  for c in evenement %}
+        {% if app.user.typec == 'chasseur' %}
+                <div class="col-md-4 col-sm-12">
+                    <div class="blog">
+                        <h2  align="centre" style="color: red">{{ c.titre }}<br></h2>
+                        <img src="{{ asset('template/images/'~c.image)  }}" alt="image" style="width: 10cm;height: 7cm">
+
+
+                        <h2 align="left">
+
+                    <center>
+                           <p style="color: #0D47A1; font-size: large;">{{ c.typedetalent }}</p> <br>
+                         <p style="color: #0D47A1; font-size: large;" > cout : {{ c.cout }} Diamond <i class="fa fa-diamond"></i></p>
+                        <p style="color: #0D47A1; font-size: large;" > nbparticipant : {{ c.nbparticipant }}  </p>
+
+
+                            <br>
+                    </center>
+
+                        </h2>
+
+                        <td><a href="{{ path('supprimer', {'id':c.id_evenement})  }}">Supprimer</a></td>
+                        <td><a href="{{ path('modifier', {'id':c.id_evenement})  }}">Modifier</a></td>
+
+                    </div>
+                </div>
+        {% else %}
+            <script>
+                window.alert("Seulement le Chasseur peut voir cette page");
+
+            </script>
+        {% endif %}
+    {% endfor %}
+
+            </div>
+            <div class="navigation text-center">
+                {{ knp_pagination_render(evenement) }}
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <footer>
+        <div class="footy-sec mn no-margin">
+            <div class="container">
+                <ul>
+                    <li><a href="help-center.html" title="">Help Center</a></li>
+                    <li><a href="about.html" title="">About</a></li>
+                    <li><a href="#" title="">Privacy Policy</a></li>
+                    <li><a href="#" title="">Community Guidelines</a></li>
+                    <li><a href="#" title="">Cookies Policy</a></li>
+                    <li><a href="#" title="">Career</a></li>
+                    <li><a href="forum.html" title="">Forum</a></li>
+                    <li><a href="#" title="">Language</a></li>
+                    <li><a href="#" title="">Copyright Policy</a></li>
+                </ul>
+                <p><img src="images/copy-icon2.png" alt="">Copyright 2019</p>
+
+            </div>
+        </div>
+    </footer><!--footer end-->
+
+{% endblock %}

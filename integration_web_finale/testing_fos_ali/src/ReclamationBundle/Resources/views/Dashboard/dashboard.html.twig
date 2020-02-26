@@ -1,0 +1,103 @@
+{% extends 'admin.html.twig' %}
+{% block body %}
+    <section class="content home">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-5 col-md-7 col-sm-12">
+                    <ul class="breadcrumb float-md-left">
+                        <li class="breadcrumb-item"><a href="#"><i class="zmdi zmdi-home"></i> Acceuil</a></li>
+                        <li class="breadcrumb-item"><a href="#">Reclamation</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="body table-responsive members_profiles">
+                            <input type="text" class="form-control" placeholder="Search..." id="searchrec">
+                            <div class="nav nav-second-level" id="entitiesNav"></div>
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th style="width:60px;">Utilisateur</th>
+                                    <th>Type</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Repondre</th>
+                                    <th>Supprimer</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                {% for r in reclamations %}
+                                    <tr>
+                                        <td>{{ r.user.username }}</td>
+                                        <td>{{ r.type }}</td>
+                                        <td>{{ r.dateCreation | date }}</td>
+                                        {% if r.status==0 %}
+                                            <td>Non traité</td>
+                                            <td><a href="{{ path('traiter',{'id':r.id}) }}">Répondre</a></td>
+                                        {% else %}
+                                            <td>Traité</td>
+                                            <td><a href="{{ path('traiter',{'id':r.id}) }}">Voir</a></td>
+                                        {% endif %}
+                                        <td><a href="{{ path('delete',{'id':r.id}) }}">Supprimer</a></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <!--<input type="text" class="form-control" placeholder="Search...",id="rechercherrec">
+                            <a id="clickHere" href="#">click here for test</a>-->
+                        </div>
+                    </div>
+                    <a href="{{ path('tri')}}">Trier les Reclamations</a>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function() {
+                var searchRequest = null;
+                $("#searchrec").keyup(function() {
+                    var minlength = 0;
+                    var that = this;
+                    var value = $(this).val();
+                    var entitySelector = $("#entitiesNav").html('');
+                    if (value.length >= minlength ) {
+                        if (searchRequest != null)
+                            searchRequest.abort();
+                        searchRequest = $.ajax({
+                            type: "GET",
+                            url: "{{ path('ajax_search_s') }}",
+                            data: {
+                                'q' : value
+                            },
+                            dataType: "text",
+                            success: function(msg){
+                                //we need to check if the value is the same
+                                if (value===$(that).val()) {
+                                    var result = JSON.parse(msg);
+                                    $.each(result, function(key, arr) {
+                                        $.each(arr, function(id, value) {
+                                            if (key === 'entities') {
+                                                if (id !== 'error') {
+                                                    entitySelector.append('<li><a href="/admin/traiter/'+id+'">Voir</a></li></br>');
+                                                } else {
+                                                    entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                                }
+                                            }
+                                        });
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+        </script>
+    </section>
+{% endblock %}

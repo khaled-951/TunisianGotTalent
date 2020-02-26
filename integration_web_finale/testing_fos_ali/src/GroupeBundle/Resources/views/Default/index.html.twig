@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>hide demo</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+<body>
+
+<p>Hello</p>
+<a id="lien" href="#">Click to hide me too</a>
+<p>Here is another paragraph</p>
+
+<script>
+    $( "a" ).click(function( event ) {
+        event.preventDefault();
+        $( this ).hide();
+    });
+</script>
+
+</body>
+</html>

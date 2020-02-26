@@ -1,0 +1,53 @@
+{% extends 'admin.html.twig' %}
+{% block body %}
+    <section class="content home">
+        <div class="block-header">
+            <div class="row">
+                <div class="col-lg-5 col-md-7 col-sm-12">
+                    <ul class="breadcrumb float-md-left">
+                        <li class="breadcrumb-item"><a href="#"><i class="zmdi zmdi-home"></i> Acceuil</a></li>
+                        <li class="breadcrumb-item"><a href="#">Avis</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row clearfix">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <div class="card">
+                        <div class="body table-responsive members_profiles">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th style="width:60px;">Utilisateur</th>
+                                    <th>Reclamation</th>
+                                    <th>Note</th>
+                                    <th>Description</th>
+                                    <th>Supprimer</th>
+                                    <th>Archiver</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for r in avis %}
+                                    <tr>
+                                        <td>{{ r.user.username }}</td>
+                                        <td><a href="{{ path('traiter',{'id':r.reclamation.id}) }}">voir reclamation</a></td>
+                                        <td>{{ r.note }}</td>
+                                        <td>{{ r.description }}</td>
+                                        <td><a href="{{ path('deleteavis',{'id':r.id}) }}">Supprimer</a></td>
+                                        <td><a href="{{ path('archiver',{'id':r.id}) }}">Archiver</a></td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                    <a href="{{ path('stat') }}">Voir les statistiques</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

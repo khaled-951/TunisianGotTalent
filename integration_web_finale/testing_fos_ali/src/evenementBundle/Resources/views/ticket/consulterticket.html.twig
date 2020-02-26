@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <br><br><br>
+    <script type="text/javascript">
+        function imprimer_page(){
+            window.print();
+        }
+    </script>
+
+
+    {%  for c in ticket %}
+
+
+
+    <div class="card text-md-center" >
+        <div class="card-header">
+            <td>******************Your Ticket *********************</td>
+
+        </div>
+        <div class="card-body">
+            <h3 style="color: red; font-size: large;" class="card-title">Titre  : {{ c.evenement.titre }}</h3>
+            <p style="color: darkblue; font-size: large;" class="card-text">
+            datedebut  : {{ c.evenement.datedebut |date('Y-m-d')}}<br>
+            datefin  : {{ c.evenement.datefin |date('Y-m-d')}}<br>
+            {{ c.evenement.description }}<br><br>
+            </p>
+            <a href="{{ path('pdf',{'id':c.id_ticket}) }}"> Exporter PDF </a>
+            <br>
+            <br>
+              <a id="impression" name="impression" type="button" onclick="imprimer_page()"  >Imprimer cette page</a>
+
+            <br>
+        </div>
+        <div class="card-footer text-muted">
+            Date Emission :  {{ c.dateemission|date('Y-m-d') }}
+        </div>
+    </div>
+        <br><br><br>  <br><br><br>
+    {% endfor %}
+{% endblock %}

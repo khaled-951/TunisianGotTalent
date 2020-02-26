@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+    <section class="forum-sec">
+        <div class="container">
+            <div class="searchtitle">
+
+            </div>
+            <div class="search-container">
+                {{ form_start(form,{'attr':{'class':'sec-search'}}) }}
+
+                    {{ form_widget(form.subject,{'attr':{'placeholder':'Search for email  with...'}}) }}
+{#
+                    <input type="text" placeholder="Search for email content  with..." name="search">
+#}
+                    <button type="submit" class="topsearch"><i class="fa fa-search"></i></button>
+
+                {{ form_end(form) }}
+            </div><!--search-box end-->
+        </div>
+    </section>
+
+    <section class="forum-page">
+        <div class="container">
+            <div class="forum-questions-sec">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="forum-questions">
+                           {% for mail in mails %}
+                            <div class="usr-question">
+                                <div class="usr_img">
+                                    {% if mail.idsp is not null %}
+                                    <img src="{{ asset('uploads/images/' ~ mail.idsp.logo) }}" alt="">
+                                    {% endif %}
+                                </div>
+                                <div class="usr_quest">
+                                    <h3>to: <a href="{{ path('user_show',{'id':mail.id}) }}">{{ mail.mailto }}</a> </h3>
+
+                                    <h4>Subject: {{ mail.subject }}</h4>
+
+                                </div><!--usr_quest end-->
+                                <span class="quest-posted-time"><i class="fa fa-clock-o"></i>{{ mail.time | date(" l H:i")}} </span>
+                            </div><!--usr-question end-->
+                            {% endfor %}
+                        </div><!--forum-questions end-->
+
+
+                        <nav aria-label="Page navigation example" class="full-pagi">
+                            <ul class="pagination">
+                                <div class="card">
+                                    <div class="body">
+                                        <ul class="pagination pagination-primary center m-b-0">
+                                            {{ knp_pagination_render(mails) }}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="widget widget-adver">
+                            <img src="{{ asset('template/images/resources/adver-img.png') }}" alt="">
+                        </div><!--widget-adver end-->
+                        <div class="widget widget-adver">
+                            <img src="{{ asset('template/images/resources/adver-img.png') }}" alt="">
+                        </div><!--widget-adver end-->
+                    </div>
+                </div>
+            </div><!--forum-questions-sec end-->
+        </div>
+    </section>
+{% endblock %}

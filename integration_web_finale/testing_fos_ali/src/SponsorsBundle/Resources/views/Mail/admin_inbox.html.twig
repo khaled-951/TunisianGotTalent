@@ -1,0 +1,86 @@
+{% extends 'admin.html.twig' %}
+{% block body %}
+<section class="content ecommerce-page">
+    <div class="block-header">
+        <div class="row">
+            <div class="col-lg-5 col-md-7 col-sm-12">
+                <ul class="breadcrumb float-md-left">
+                    <li class="breadcrumb-item"><a href="#"><i class="zmdi zmdi-home"></i> Acceuil</a></li>
+                    <li class="breadcrumb-item"><a href="#">Inbox</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>      <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="col-lg-12">
+                <div class="card action_bar">
+                    <div class="body">
+                        {{ form_start(form,{'method':'post'}) }}
+                        <div class="row clearfix">
+                            <div class="col-md-4 ">
+                                <div class="search ">
+
+                                    {{ form_widget(form.subject,{'attr':{'class':'form-control','placeholder':'Search ...'}}) }}
+
+                                </div>
+                            </div>
+                            <div class="col-md-1 ">
+                                <div class="checkbox inlineblock delete_all">
+                                    <input type="submit" class="btn btn-primary btn-round " value="Search">
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-7  text-right">
+
+
+                                <button type="button" class="btn btn-neutral hidden-sm-down">
+                                    <a href="{{ path('admin_compose') }}"><i class="zmdi zmdi-plus-circle"></i></a>
+                                </button>
+
+                            </div>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col-md-12 ">
+                <ul class="mail_list list-group list-unstyled">
+                {% for mail in mails %}
+                    <li class="list-group-item">
+
+                            <div class="col-lg-1 row ">
+                            {% if mail.idsp is not null %}
+                                <div class=""> <img src="{{ asset('uploads/images/' ~ mail.idsp.logo) }}" class="rounded-circle " alt=""> </div>
+                            {%  else %}
+                                <div class=""> <img src="{{ asset('Dashboard/assets/images/avatar.png') }}" class="rounded-circle " alt=""> </div>
+
+                            {% endif %}
+                            </div>
+                            <div class=" col-lg-11">
+                                <div class=" media-heading">
+                                    <a href="{{ path('admin_show',{'id':mail.id}) }}" class="m-r-10"> {{ mail.mailto }}</a>
+
+                                    <small class="float-right text-muted"><time class="hidden-sm-down" datetime="2017">{{ mail.time | date(" m M H:i")}}</time> </small>
+                                </div>
+                                <p class="msg pull-right">Subject: {{ mail.subject }} </p>
+                            </div>
+
+                    </li>
+                {% endfor %}
+                </ul>
+                <div class="card m-t-5">
+                    <div class="body">
+                        <ul class="pagination pagination-primary m-b-0">
+                            {{ knp_pagination_render(mails) }}
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

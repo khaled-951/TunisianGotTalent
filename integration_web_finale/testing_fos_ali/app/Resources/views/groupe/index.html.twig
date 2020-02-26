@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Groupes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Datecreation</th>
+                <th>Photo</th>
+                <th>Categorie</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for groupe in groupes %}
+            <tr>
+                <td><a href="{{ path('groupe_show', { 'id': groupe.id }) }}">{{ groupe.id }}</a></td>
+                <td>{{ groupe.nom }}</td>
+                <td>{{ groupe.description }}</td>
+                <td>{% if groupe.dateCreation %}{{ groupe.dateCreation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td><img src="{{ asset('images/') }}{{ groupe.photo }}" style="width: 50px;height: 50px"></td>
+                <td>{{ groupe.categorie }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('groupe_show', { 'id': groupe.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('groupe_edit', { 'id': groupe.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('groupe_new') }}">Create a new groupe</a>
+        </li>
+    </ul>
+{% endblock %}
